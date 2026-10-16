@@ -26,7 +26,7 @@ h1 span{display:inline-block;transform:skewX(-9deg);transform-origin:left}
 .rd b{font-family:var(--sport);font-style:italic;font-weight:900;font-size:1.4rem}
 .rd .st{font-size:.8rem;font-weight:700;padding:2px 8px}
 .st.done{background:var(--volt);color:var(--bg)} .st.next{border:1px solid var(--red);color:var(--red)}
-main{padding-block:36px 72px;display:grid;gap:28px}
+main{padding-block:36px 72px;display:grid;gap:28px;grid-template-columns:minmax(0,1fr)}
 .controls{display:grid;gap:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 53px);background:var(--bg);z-index:4;padding-block:12px;border-bottom:1px solid var(--line)}
 .seg{display:flex;flex-wrap:wrap;gap:8px}
 .seg button{font:inherit;font-weight:700;color:#c9ced6;background:var(--card);border:1px solid var(--line);padding:8px 16px;cursor:pointer;transition:all .2s}
@@ -63,6 +63,7 @@ tr.p1{box-shadow:inset 4px 0 0 var(--gold)} tr.p2{box-shadow:inset 4px 0 0 var(-
 .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.82rem;color:var(--muted)}
 footer{border-top:1px solid var(--line)}
 footer .wrap{padding-block:28px}
+@media (max-width:600px){table{min-width:0}th{font-size:.8rem;padding:9px 6px;letter-spacing:.02em}td{padding:10px 6px}.hm{display:none}.pos{font-size:1.3rem;width:1.6em}.name b{font-size:.95rem}.cell b{font-size:1.1rem}.total{font-size:1.5rem}.name{white-space:normal}.seg button{padding:8px 12px}.legend{display:grid}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head><body>
 <nav><div class="wrap"><a class="back" href="index.html">← 星宇聯賽</a><span class="kicker">Standings 2026</span>  <a href="https://dancepassionsoul.com/" target="_blank" rel="noopener">舞動魂</a>
@@ -85,7 +86,7 @@ footer .wrap{padding-block:28px}
   <section>
     <div class="board-head"><h2 id="bTitle"></h2><p id="bSub"></p></div>
     <div class="tbl" style="margin-top:14px"><table>
-      <thead><tr><th>#</th><th>選手</th><th class="r">R1 星苑大獎賽</th><th class="r">R2 寰宇盃</th><th class="r">總積分</th></tr></thead>
+      <thead><tr><th>#</th><th>選手</th><th class="r">R1<span class="hm"> 星苑大獎賽</span></th><th class="r">R2<span class="hm"> 寰宇盃</span></th><th class="r">總積分</th></tr></thead>
       <tbody id="rows"></tbody>
     </table><div id="empty" class="empty" hidden><b>第一場成績整理中</b><p>星苑大獎賽的積分正在核算，公布後會顯示在這裡。</p></div></div>
   </section>
