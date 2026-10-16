@@ -293,21 +293,63 @@ footer h2{font-size:clamp(2rem,5vw,3rem)}
   .ticker .track{animation:none}
   *{transition:none!important}
 }
+
+/* nav menu */
+nav .wrap{overflow:visible;gap:22px}
+nav .menu{position:relative}
+nav .menu summary{list-style:none;cursor:pointer;color:var(--white);font-weight:700;font-size:.92rem;display:flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line);background:var(--card)}
+nav .menu summary::-webkit-details-marker{display:none}
+nav .menu summary i{width:7px;height:7px;border-right:2px solid var(--volt);border-bottom:2px solid var(--volt);transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+nav .menu[open] summary i{transform:rotate(-135deg) translateY(-2px)}
+nav .menu[open] summary{border-color:var(--volt)}
+nav .panel{position:absolute;right:0;top:calc(100% + 10px);min-width:200px;background:var(--bg-2);border:1px solid var(--line);display:grid;padding:6px;box-shadow:0 18px 40px rgba(0,0,0,.5)}
+nav .panel a{padding:12px 14px;color:#c9ced6;font-size:1rem;border-bottom:1px solid var(--line)}
+nav .panel a:last-child{border-bottom:0}
+nav .panel a:hover{background:var(--card);color:var(--white)}
+nav .panel a::after{display:none}
+nav .lbl-m,nav .only-m{display:none}
+@media (max-width:760px){
+  nav .pri{display:none}
+  nav .lbl-d{display:none}
+  nav .lbl-m,nav .only-m{display:inline}
+  nav .menu{margin-left:auto}
+  nav .brand{margin-right:0}
+  nav .panel{position:fixed;left:0;right:0;top:auto;margin-top:12px;border-left:0;border-right:0;max-height:calc(100vh - 80px);overflow:auto}
+  nav .panel a{padding:16px 22px}
+}
+/* sponsors strip */
+.sponsors-strip{border-top:1px solid var(--line);background:var(--bg-2)}
+.sponsors-strip .wrap{padding-block:34px;display:grid;gap:16px}
+.sponsors-strip .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px}
+.sponsors-strip .logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.sponsors-strip .logos img{height:44px;width:auto;max-width:140px;object-fit:contain;filter:grayscale(1) brightness(1.6);opacity:.8;transition:all .2s}
+.sponsors-strip .logos a:hover img{filter:none;opacity:1}
+.sponsors-strip .soon{color:var(--muted);font-size:.95rem}
+.sponsors-strip .go{color:var(--volt);font-weight:700;text-decoration:none;white-space:nowrap}
 </style>
 
 </head>
 <body>
 <nav aria-label="頁面導覽"><div class="wrap">
   <a class="brand" href="#top">XIN-YU <i>LEAGUE</i></a>
-  <a href="#season">賽程</a>
-  <a href="#points">積分制度</a>
-  <a href="#rewards">獎勵</a>
-  <a href="#calc">積分試算</a>
-  <a href="standings.html">2026 積分榜</a>
-  <a href="worldcup.html">海外賽事</a>
-  <a href="#contact">聯絡</a>
-  <a href="https://www.instagram.com/xinyu_dance_league/" target="_blank" rel="noopener">Instagram</a>
-  <a href="https://dancepassionsoul.com/" target="_blank" rel="noopener">舞動魂</a>
+  <a class="pri" href="#season">賽程</a>
+  <a class="pri" href="#points">積分制度</a>
+  <a class="pri" href="#rewards">獎勵</a>
+  <a class="pri" href="standings.html">2026 積分榜</a>
+  <details class="menu" id="menu"><summary><span class="lbl-d">更多</span><span class="lbl-m">選單</span><i aria-hidden="true"></i></summary>
+    <div class="panel">
+      <a class="only-m" href="#season">賽程</a>
+      <a class="only-m" href="#points">積分制度</a>
+      <a class="only-m" href="#rewards">獎勵</a>
+      <a class="only-m" href="standings.html">2026 積分榜</a>
+      <a href="#calc">積分試算</a>
+      <a href="worldcup.html">海外賽事</a>
+      <a href="sponsors.html">贊助夥伴</a>
+      <a href="#contact">聯絡我們</a>
+      <a href="https://www.instagram.com/xinyu_dance_league/" target="_blank" rel="noopener">Instagram ↗</a>
+      <a href="https://dancepassionsoul.com/" target="_blank" rel="noopener">舞動魂官網 ↗</a>
+    </div>
+  </details>
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap split">
@@ -461,6 +503,13 @@ footer h2{font-size:clamp(2rem,5vw,3rem)}
 </div></section>
 </main>
 
+<section class="sponsors-strip" id="sponsors"><div class="wrap">
+  <div class="row"><span class="kicker">Partners</span><a class="go" href="sponsors.html">贊助夥伴 · 成為贊助商 →</a></div>
+  <div class="logos">
+    <!-- 贊助商 logo 範例：<a href="https://example.com" target="_blank" rel="noopener"><img src="img/sponsors/example.png" alt="贊助商名稱"></a> -->
+    <span class="soon">2027 贊助夥伴名單即將公布</span>
+  </div>
+</div></section>
 <footer id="contact"><div class="wrap">
   <div class="head" style="margin:0"><span class="kicker">Contact</span><h2><span class="zh-bold">報名與洽詢</span></h2></div>
   <div class="contact">
@@ -516,5 +565,11 @@ footer h2{font-size:clamp(2rem,5vw,3rem)}
 })();
 </script>
 
+<script>
+(function(){var m=document.getElementById('menu');if(!m)return;
+m.addEventListener('click',function(e){if(e.target.closest('.panel a'))m.removeAttribute('open')});
+document.addEventListener('click',function(e){if(!m.contains(e.target))m.removeAttribute('open')});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')m.removeAttribute('open')});})();
+</script>
 </body>
 </html>
