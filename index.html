@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="2027 星宇聯賽：星苑大獎賽與寰宇盃兩場運動舞蹈國際公開賽，加上五場集訓營。U8–U16 單人組別摩登、拉丁分開計分，各組積分冠軍獲得 NT$10,000 出國獎學金。">
+<meta property="og:title" content="2027 星宇聯賽 Xin-Yu League">
+<meta property="og:description" content="兩場國際公開賽＋五場集訓營，積分冠軍獲得出國獎學金。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xinyuleague.dancepassionsoul.com/">
+<link rel="canonical" href="https://xinyuleague.dancepassionsoul.com/">
+<meta name="theme-color" content="#0a0b0d">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}.ig{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin-top:12px;padding:16px 20px;background:var(--volt);color:var(--bg);text-decoration:none;clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);transition:transform .2s}.ig:hover{transform:translateY(-3px)}.ig-k{font-family:var(--sport);font-style:italic;font-weight:800;letter-spacing:.12em}.ig b{font-size:1.15rem;font-weight:900;overflow-wrap:anywhere}.ig-go{margin-left:auto;font-weight:700;font-size:.92rem}
+</style>
+<title>2027 星宇聯賽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,700;1,800;1,900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 賽事官網式 — 斜切主視覺、跑馬燈、賽程表（fixture list）、積分榜、獎勵、計分板試算。深色優先單一風格（刻意選擇），螢光綠主色、極速紅標示積分賽。 */
+:root{
+  --bg:#0a0b0d; --bg-2:#121418; --card:#171a1f; --line:#262a31;
+  --volt:#d4ff3a; --red:#ff3b3b; --white:#f5f6f2; --muted:#9097a2;
+  --sport:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.7;margin:0;overflow-x:hidden}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0;line-height:1.15;text-wrap:balance}
+p{margin:0}
+a{color:var(--volt)}
+:focus-visible{outline:2px solid var(--volt);outline-offset:3px}
+.num{font-variant-numeric:tabular-nums}
+.sport{font-family:var(--sport);font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.01em}
+.zh-bold{font-family:var(--body);font-weight:900;display:inline-block;transform:skewX(-9deg)}
+.kicker{font-family:var(--sport);font-style:italic;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--volt);font-size:1rem}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(10,11,13,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:24px;padding-block:12px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+nav .brand{font-family:var(--sport);font-style:italic;font-weight:900;font-size:1.4rem;color:var(--white);text-decoration:none;margin-right:auto;letter-spacing:.02em}
+nav .brand i{color:var(--volt);font-style:inherit}
+nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.92rem;position:relative}
+nav a:not(.brand)::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--volt);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+nav a:not(.brand):hover{color:var(--white)}
+nav a:not(.brand):hover::after{transform:scaleX(1)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"2027";position:absolute;right:-2%;bottom:-8%;font-family:var(--sport);font-style:italic;font-weight:900;font-size:clamp(9rem,30vw,22rem);line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(212,255,58,.18);pointer-events:none}
+.hero::after{content:"";position:absolute;top:0;bottom:0;right:18%;width:38%;background:linear-gradient(180deg,rgba(212,255,58,.10),transparent 70%);transform:skewX(-14deg);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;padding-block:72px 84px;display:grid;gap:26px}
+.hero h1{font-size:clamp(3.6rem,13vw,8.4rem);line-height:.98;letter-spacing:.02em}
+.hero h1 .zh-bold{background:linear-gradient(100deg,var(--white) 55%,var(--volt) 56%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .en-title{font-size:clamp(1.6rem,5vw,2.8rem);color:var(--volt);line-height:1}
+.hero .lead{max-width:34em;color:#c9ced6;font-size:1.05rem}
+.stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+.stat{background:var(--card);border:1px solid var(--line);padding:14px 22px 12px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);display:grid;min-width:130px}
+.stat b{font-family:var(--sport);font-style:italic;font-weight:900;font-size:2.6rem;line-height:1;color:var(--white)}
+.stat.hot{background:var(--volt);border-color:var(--volt)}
+.stat.hot b,.stat.hot span{color:var(--bg)}
+.stat span{font-size:.82rem;color:var(--muted);font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sport);font-style:italic;font-weight:800;text-transform:uppercase;font-size:1.1rem;letter-spacing:.04em;padding:12px 26px;text-decoration:none;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:transform .2s}
+.btn:hover{transform:translateX(4px)}
+.btn.primary{background:var(--volt);color:var(--bg)}
+.btn.ghost{background:var(--card);color:var(--white);border:1px solid var(--line)}
+
+/* ticker */
+.ticker{background:var(--volt);color:var(--bg);overflow:hidden;white-space:nowrap;border-block:1px solid var(--volt)}
+.ticker .track{display:inline-flex;gap:40px;padding-block:10px;animation:tick 28s linear infinite}
+.ticker span{font-family:var(--sport);font-style:italic;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.03em}
+.ticker span b{font-family:var(--body);font-style:normal;font-weight:900}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding-block:88px;position:relative}
+section.alt{background:var(--bg-2)}
+.head{display:grid;gap:10px;margin-bottom:40px}
+.head h2{font-size:clamp(2.2rem,6vw,3.6rem)}
+.head p{color:var(--muted);max-width:40em}
+
+/* fixtures */
+.fixtures{display:grid;gap:10px;perspective:1000px}
+.fx{display:grid;grid-template-columns:130px minmax(0,1fr) auto;gap:24px;align-items:center;background:var(--card);border:1px solid var(--line);padding:20px 24px;position:relative;overflow:hidden;transition:transform .25s ease,border-color .25s,background .25s}
+.fx::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--line);transition:width .25s,background .25s}
+.fx.comp::before{background:var(--red)}
+.fx:hover{transform:translateX(8px);border-color:#3a404a;background:#1b1f25}
+.fx:hover::before{width:8px;background:var(--volt)}
+.fx .d{font-family:var(--sport);font-style:italic;font-weight:900;font-size:2.4rem;line-height:.95;color:var(--white)}
+.fx .d small{display:block;font-family:var(--body);font-style:normal;font-weight:500;font-size:.8rem;color:var(--muted);margin-top:6px;letter-spacing:.04em}
+.fx .d.zh{font-family:var(--body);font-weight:900;font-size:1.6rem;transform:skewX(-9deg);transform-origin:left}
+.fx h3{font-size:1.2rem;font-weight:700}
+.fx.comp h3{font-size:1.45rem;font-weight:900}
+.fx .where{color:var(--muted);font-size:.92rem}
+.chip{font-family:var(--sport);font-style:italic;font-weight:800;text-transform:uppercase;font-size:.95rem;letter-spacing:.06em;padding:5px 14px;white-space:nowrap;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.chip.red{background:var(--red);color:#fff}
+.chip.volt{background:transparent;color:var(--volt);border:1px solid var(--volt);clip-path:none;border-radius:2px}
+.soon{color:var(--volt);font-weight:700}
+.judges{margin-top:28px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;color:#c9ced6;font-size:.95rem}
+.judges .chip{background:var(--white);color:var(--bg)}
+
+/* divisions: tilt cards */
+.divs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:56px;perspective:900px}
+.dv{background:linear-gradient(160deg,#1d2127,#121418);border:1px solid var(--line);padding:22px 16px 18px;display:grid;gap:6px;transform-style:preserve-3d;transition:transform .15s ease-out,border-color .25s;will-change:transform;position:relative}
+.dv:hover{border-color:var(--volt)}
+.dv b{font-family:var(--sport);font-style:italic;font-weight:900;font-size:3.2rem;line-height:.9;color:var(--volt);transform:translateZ(30px)}
+.dv span{font-size:.88rem;color:#c9ced6;transform:translateZ(18px)}
+.dv em{font-style:normal;font-size:.75rem;color:var(--muted);transform:translateZ(10px)}
+
+/* standings */
+.rules{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px}
+.board{background:var(--card);border:1px solid var(--line)}
+.board table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+.board th{font-family:var(--sport);font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.95rem;color:var(--bg);background:var(--volt);text-align:left;padding:10px 18px}
+.board th.r,.board td.p{text-align:right}
+.board td{padding:10px 18px;border-top:1px solid var(--line);transition:background .15s}
+.board tr:hover td{background:#1f242b}
+.board td.p{font-family:var(--sport);font-style:italic;font-weight:900;font-size:1.7rem;line-height:1}
+.board tr.top td.p{color:var(--volt)}
+.board .rk{font-family:var(--sport);font-style:italic;font-weight:800;color:var(--muted);width:3em}
+.board-note{color:var(--muted);font-size:.86rem;padding:12px 18px;border-top:1px solid var(--line)}
+.side{display:grid;gap:34px;align-content:start}
+.side h3{font-size:1.25rem;font-weight:900;display:flex;gap:10px;align-items:baseline;margin-bottom:14px}
+.side h3 .kicker{font-size:.85rem}
+.coef{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.coef div{background:var(--card);border:1px solid var(--line);padding:14px 8px;text-align:center;display:grid;transition:transform .2s,border-color .2s}
+.coef div:hover{transform:translateY(-4px);border-color:var(--volt)}
+.coef b{font-family:var(--sport);font-style:italic;font-weight:900;font-size:2.1rem;line-height:1}
+.coef span{font-size:.8rem;color:var(--muted)}
+.bonus{display:flex;align-items:center;gap:16px}
+.bonus b{font-family:var(--sport);font-style:italic;font-weight:900;font-size:3.4rem;line-height:.9;color:var(--volt)}
+.bonus p{color:#c9ced6}
+ol.tie{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:t}
+ol.tie li{counter-increment:t;display:grid;grid-template-columns:36px 1fr;align-items:center;gap:10px;color:#c9ced6}
+ol.tie li::before{content:counter(t);font-family:var(--sport);font-style:italic;font-weight:900;font-size:1.6rem;color:var(--white);background:var(--card);border:1px solid var(--line);text-align:center;line-height:36px;height:36px}
+
+/* rewards */
+.prize-hero{position:relative;overflow:hidden;background:var(--volt);color:var(--bg);padding:44px 40px;display:grid;gap:8px;clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),calc(100% - 28px) 100%,0 100%);margin-bottom:24px}
+.prize-hero::after{content:"";position:absolute;right:-6%;top:-40%;width:44%;height:180%;background:rgba(10,11,13,.08);transform:skewX(-18deg)}
+.prize-hero .kicker{color:var(--bg)}
+.prize-hero .amt{font-family:var(--sport);font-style:italic;font-weight:900;font-size:clamp(4rem,14vw,8rem);line-height:.85}
+.prize-hero .amt small{font-size:.35em;vertical-align:top;margin-right:6px}
+.prize-hero h3{font-size:1.5rem;font-weight:900}
+.prize-hero p{font-weight:500;position:relative;z-index:1}
+.perks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;perspective:900px}
+.perk{background:var(--card);border:1px solid var(--line);padding:24px;display:grid;gap:10px;align-content:start;transform-style:preserve-3d;transition:transform .15s ease-out,border-color .25s;min-width:0}
+.perk:hover{border-color:var(--volt)}
+.perk .who{font-family:var(--sport);font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--volt);font-size:.95rem}
+.perk h3{font-size:1.25rem;font-weight:900}
+.perk p{color:#c9ced6;font-size:.93rem}
+.vouch{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.vouch th{font-size:.8rem;color:var(--muted);font-weight:500;text-align:right;padding:4px 0}
+.vouch th:first-child{text-align:left}
+.vouch td{padding:6px 0;border-top:1px solid var(--line);font-size:.92rem}
+.vouch td.p{text-align:right;font-family:var(--sport);font-style:italic;font-weight:800;font-size:1.35rem}
+.fine{margin-top:22px;color:var(--muted);font-size:.85rem}
+
+/* calculator: scoreboard */
+.score{background:var(--card);border:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) 300px}
+.score .in{padding:28px;display:grid;gap:22px;min-width:0}
+.legs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.leg{display:grid;gap:10px}
+.leg h4{margin:0;font-family:var(--body);font-weight:900;font-size:1rem;display:flex;gap:8px;align-items:center}
+.leg h4 .chip{font-size:.8rem;padding:2px 10px}
+label{display:grid;gap:4px;font-size:.82rem;color:var(--muted)}
+select,input[type=number]{font:inherit;font-size:1rem;color:var(--white);background:var(--bg);border:1px solid var(--line);padding:10px 12px;width:100%;border-radius:0}
+select:hover,input[type=number]:hover{border-color:#3a404a}
+.camps-in{display:flex;flex-wrap:wrap;gap:8px}
+.camps-in label{position:relative;cursor:pointer}
+.camps-in input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.camps-in span{display:inline-block;padding:8px 14px;border:1px solid var(--line);color:#c9ced6;font-size:.92rem;transition:all .2s}
+.camps-in input:checked + span{background:var(--volt);border-color:var(--volt);color:var(--bg);font-weight:700}
+.camps-in input:focus-visible + span{outline:2px solid var(--volt);outline-offset:2px}
+.out{background:var(--bg);border-left:1px solid var(--line);padding:28px;display:grid;align-content:center;justify-items:center;gap:6px;text-align:center}
+.out .total{font-family:var(--sport);font-style:italic;font-weight:900;font-size:6rem;line-height:.85;color:var(--volt);transition:transform .2s}
+.out .total.bump{transform:scale(1.08)}
+.out .break{color:var(--muted);font-size:.82rem}
+.warn{color:var(--red);font-size:.86rem;font-weight:700}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:64px;display:grid;gap:28px}
+footer h2{font-size:clamp(2rem,5vw,3rem)}
+.contact{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.contact div{background:var(--card);border:1px solid var(--line);padding:16px 18px;display:grid;min-width:0;transition:border-color .2s}
+.contact div:hover{border-color:var(--volt)}
+.contact span{font-size:.8rem;color:var(--muted)}
+.contact b{font-family:var(--sport);font-weight:800;font-size:1.4rem;user-select:all;overflow-wrap:anywhere;letter-spacing:.02em}
+.contact b.mail{font-family:var(--body);font-weight:700;font-size:1rem}
+.org{color:var(--muted);font-size:.84rem}
+
+/* hero grid + motif (FIFA 26 式幾何圖騰：方塊與四分之一圓組成，呼應舞池與旋轉) */
+.hero .wrap.split{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:40px}
+.hero-copy{display:grid;gap:26px;min-width:0}
+.motif{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;aspect-ratio:1;max-width:100%;width:100%}
+.motif i{display:block;aspect-ratio:1;transition:transform .45s cubic-bezier(.2,.8,.2,1),background .3s;cursor:crosshair}
+.motif i.q{border-radius:100% 0 0 0}
+.motif i:hover{filter:brightness(1.25)}
+.motif-cap{font-family:var(--sport);font-style:italic;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-size:.85rem;margin-top:10px;text-align:right}
+
+/* season strip */
+.strip{overflow-x:auto;scrollbar-width:thin;margin-bottom:8px}
+.strip ol{list-style:none;margin:0;padding:0 0 12px;display:grid;grid-template-columns:repeat(7,minmax(140px,1fr));gap:0;min-width:980px;position:relative}
+.strip ol::before{content:"";position:absolute;left:0;right:0;top:15px;height:2px;background:var(--line)}
+.strip li{position:relative;padding-top:38px;padding-right:14px;display:grid;gap:4px}
+.strip li::before{content:"";position:absolute;top:8px;left:0;width:14px;height:14px;transform:rotate(45deg);background:var(--bg);border:2px solid var(--volt)}
+.strip li.comp::before{background:var(--red);border-color:var(--red);width:18px;height:18px;top:6px}
+.strip b{font-family:var(--sport);font-style:italic;font-weight:900;font-size:1.7rem;line-height:1}
+.strip b.zh{font-family:var(--body);font-size:1.15rem;transform:skewX(-9deg);transform-origin:left;display:inline-block}
+.strip span{font-size:.9rem;font-weight:700}
+.strip em{font-style:normal;font-size:.78rem;color:var(--muted)}
+
+/* on the floor: 每場比賽各有城市識別色 */
+.floor-head{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:56px 0 18px}
+.floor-head h3{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900}
+.floor-head h3 .sport{color:var(--volt);margin-right:10px}
+.floor-head p{color:var(--muted);font-size:.92rem}
+.events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;perspective:1100px}
+.ev{position:relative;overflow:hidden;min-height:360px;padding:30px;display:grid;align-content:space-between;gap:28px;transform-style:preserve-3d;transition:transform .15s ease-out;color:#fff;isolation:isolate}
+.ev.tc{background:linear-gradient(135deg,#7a0d16 0%,#2a0508 55%,#140204 100%)}
+.ev.kh{background:linear-gradient(135deg,#3b1d8a 0%,#151040 55%,#07071a 100%)}
+.ev::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background-size:44px 44px}
+.ev.tc::before{background-image:radial-gradient(circle at 0 0,transparent 21px,rgba(255,201,107,.18) 22px,transparent 23px)}
+.ev.kh::before{background-image:radial-gradient(1.4px 1.4px at 12px 14px,#fff 50%,transparent 51%),radial-gradient(1px 1px at 32px 34px,#9fd6ff 50%,transparent 51%)}
+.ev .round{position:absolute;right:-10px;bottom:-34px;font-family:var(--sport);font-style:italic;font-weight:900;font-size:13rem;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.14);z-index:-1}
+.ev .top{display:flex;justify-content:space-between;gap:12px;align-items:start;transform:translateZ(24px)}
+.ev .city{font-family:var(--sport);font-style:italic;font-weight:800;letter-spacing:.14em;font-size:1rem}
+.ev.tc .city{color:#ffc96b} .ev.kh .city{color:#9fd6ff}
+.ev .date{font-family:var(--sport);font-style:italic;font-weight:900;font-size:4.2rem;line-height:.85;text-align:right}
+.ev .date small{display:block;font-family:var(--body);font-style:normal;font-weight:500;font-size:.8rem;opacity:.75;margin-top:6px}
+.ev .date.zh{font-family:var(--body);font-size:2.4rem;transform:skewX(-9deg)}
+.ev .body{display:grid;gap:8px;transform:translateZ(36px)}
+.ev h4{margin:0;font-weight:900;font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.1;transform:skewX(-6deg);transform-origin:left}
+.ev .meta{opacity:.85;font-size:.95rem}
+.ev .final{display:inline-block;background:var(--volt);color:var(--bg);font-weight:900;font-size:.8rem;padding:3px 10px;margin-top:4px;justify-self:start}
+
+/* off the floor: 集訓營 */
+.camps4{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;perspective:900px}
+.cp .style{justify-self:start;font-size:.78rem;font-weight:700;padding:2px 10px;border:1px solid currentColor}
+.cp .style.mo{color:var(--white)} .cp .style.la{color:var(--red)} .cp .style.bo{color:var(--volt)}
+.cp.both{border-color:rgba(212,255,58,.45)}
+@media (max-width:1000px){.camps4{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cp{background:var(--card);border:1px solid var(--line);padding:22px;display:grid;gap:10px;align-content:start;transform-style:preserve-3d;transition:transform .15s ease-out,border-color .25s;min-width:0}
+.cp:hover{border-color:var(--volt)}
+.cp .pts{font-family:var(--sport);font-style:italic;font-weight:900;font-size:2.8rem;line-height:.9;color:var(--volt);transform:translateZ(26px)}
+.cp .when{font-family:var(--sport);font-style:italic;font-weight:800;letter-spacing:.08em;font-size:.95rem;color:var(--muted)}
+.cp h4{margin:0;font-size:1.08rem;font-weight:900}
+.cp p{color:#c9ced6;font-size:.88rem}
+
+/* 連結到活動頁 */
+.strip .node{display:grid;gap:4px;color:inherit;text-decoration:none;padding:6px 10px 10px 0;transition:transform .2s}
+.strip .node:hover{transform:translateY(-3px)}
+.strip .node:hover b,.strip .node:hover span{color:var(--volt)}
+.strip .more{font-style:normal;font-size:.78rem;font-weight:700;color:var(--volt);opacity:.75;transition:opacity .2s}
+.strip .node:hover .more{opacity:1}
+.ev,.cp{position:relative}
+.go{justify-self:start;font-weight:700;font-size:.9rem;color:var(--volt);text-decoration:none;margin-top:6px}
+.ev .go{color:#fff;border-bottom:2px solid var(--volt);padding-bottom:2px}
+.stretch::after{content:"";position:absolute;inset:0;z-index:2}
+.cp:hover .go,.ev:hover .go{text-decoration:underline}
+@media (max-width:860px){
+  .hero .wrap.split{grid-template-columns:1fr}
+  .motif-wrap{max-width:320px}
+  .events{grid-template-columns:1fr}
+  .camps4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ev{min-height:300px;padding:24px}
+}
+@media (max-width:480px){.camps4{grid-template-columns:1fr}}
+
+@media (max-width:860px){
+  .divs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .divs .dv:last-child{grid-column:1/-1}
+  .rules{grid-template-columns:1fr}
+  .perks{grid-template-columns:1fr}
+  .score{grid-template-columns:1fr}
+  .out{border-left:0;border-top:1px solid var(--line)}
+  .contact{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  section{padding-block:64px}
+  .hero .wrap{padding-block:48px 60px}
+  .fx{grid-template-columns:88px minmax(0,1fr);gap:6px 16px;padding:16px 18px}
+  .fx .chip{grid-column:2;justify-self:start}
+  .fx .d{font-size:1.9rem}
+  .fx .d.zh{font-size:1.3rem}
+  .legs{grid-template-columns:1fr}
+  .prize-hero{padding:32px 24px}
+  .stat{min-width:0;flex:1 1 40%}
+}
+@media (prefers-reduced-motion:reduce){
+  .ticker .track{animation:none}
+  *{transition:none!important}
+}
+</style>
+
+</head>
+<body>
+<nav aria-label="頁面導覽"><div class="wrap">
+  <a class="brand" href="#top">XIN-YU <i>LEAGUE</i></a>
+  <a href="#season">賽程</a>
+  <a href="#points">積分制度</a>
+  <a href="#rewards">獎勵</a>
+  <a href="#calc">積分試算</a>
+  <a href="standings.html">2026 積分榜</a>
+  <a href="worldcup.html">海外賽事</a>
+  <a href="#contact">聯絡</a>
+  <a href="https://www.instagram.com/xinyu_dance_league/" target="_blank" rel="noopener">Instagram</a>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap split">
+  <div class="hero-copy">
+  <span class="kicker">Season 2027 · Taiwan</span>
+  <h1><span class="zh-bold">星宇聯賽</span></h1>
+  <div class="en-title sport">Xin-Yu League</div>
+  <p class="lead">星苑大獎賽與寰宇盃兩場國際公開賽，加上五場集訓營，一整年累積積分。摩登、拉丁分開計分，各組積分冠軍獲得出國獎學金。</p>
+  <div class="stats">
+    <div class="stat"><b class="num">2</b><span>積分比賽</span></div>
+    <div class="stat"><b class="num">5</b><span>集訓營</span></div>
+    <div class="stat"><b class="num">5</b><span>積分組別</span></div>
+    <div class="stat hot"><b class="num">$10K</b><span>冠軍出國獎學金</span></div>
+  </div>
+  <div class="cta"><a class="btn primary" href="#season">看賽程 →</a><a class="btn ghost" href="standings.html">2026 積分榜</a></div>
+  </div>
+  <div class="motif-wrap" aria-hidden="true"><div class="motif" id="motif"></div><div class="motif-cap">36 tiles · 2 rounds · 5 camps</div></div>
+</div></header>
+
+<div class="ticker" aria-hidden="true"><div class="track">
+  <span>Xin-Yu League 2027</span><span><b>星苑大獎賽</b> 3.21</span><span>Points Race</span><span><b>寰宇盃</b> Nov</span><span>U8 · U10 · U12 · U14 · U16</span><span>Champion Scholarship $10,000</span>
+  <span>Xin-Yu League 2027</span><span><b>星苑大獎賽</b> 3.21</span><span>Points Race</span><span><b>寰宇盃</b> Nov</span><span>U8 · U10 · U12 · U14 · U16</span><span>Champion Scholarship $10,000</span>
+</div></div>
+
+<main>
+<section id="season"><div class="wrap">
+  <div class="head"><span class="kicker">Fixtures</span><h2><span class="zh-bold">2027 賽程</span></h2><p>兩場比賽都要出賽，才列入年度積分排名。摩登、拉丁分開計分，各自採計自己的營隊。</p></div>
+  <div class="strip" role="region" aria-label="賽季時間軸" tabindex="0"><ol>
+    <li><a class="node" href="winter-modern.html"><b class="num">1.26–27</b><span>摩登寒訓營</span><em>摩登 +10</em><i class="more">詳情 →</i></a></li>
+    <li><a class="node" href="winter-latin.html"><b class="num">1.28–29</b><span>拉丁寒訓營</span><em>拉丁 +10</em><i class="more">詳情 →</i></a></li>
+    <li><a class="node" href="masters.html"><b class="num">3.20</b><span>名師訓練營</span><em>摩登、拉丁皆 +10</em><i class="more">詳情 →</i></a></li>
+    <li class="comp"><a class="node" href="xingyuan.html"><b class="num">3.21</b><span>星苑大獎賽</span><em>第一場積分賽</em><i class="more">詳情 →</i></a></li>
+    <li><a class="node" href="summer-modern.html"><b class="zh">暑假</b><span>摩登造星營</span><em>摩登 +10</em><i class="more">詳情 →</i></a></li>
+    <li><a class="node" href="summer-latin.html"><b class="zh">暑假</b><span>拉丁造星營</span><em>拉丁 +10</em><i class="more">詳情 →</i></a></li>
+    <li class="comp"><a class="node" href="huanyu.html"><b class="zh">11月</b><span>寰宇盃</span><em>第二場積分賽</em><i class="more">詳情 →</i></a></li>
+  </ol></div>
+
+  <div class="floor-head"><h3><span class="sport">On the Floor</span>賽場</h3><p>兩場積分賽，各自代表一座城市</p></div>
+  <div class="events">
+    <article class="ev tc tilt">
+      <span class="round">R1</span>
+      <div class="top"><span class="city">ROUND 1 · TAICHUNG 台中</span><div class="date num">3.21<small>2027 星期日</small></div></div>
+      <div class="body"><h4>星苑大獎賽</h4><p class="meta">運動舞蹈國際公開賽<br>台中全國大飯店</p><a class="go stretch" href="xingyuan.html">賽事資訊 →</a></div>
+    </article>
+    <article class="ev kh tilt">
+      <span class="round">R2</span>
+      <div class="top"><span class="city">ROUND 2 · KAOHSIUNG 高雄</span><div class="date zh">11月<small>2027 日期即將公布</small></div></div>
+      <div class="body"><h4>寰宇盃</h4><p class="meta">運動舞蹈國際公開賽<br>高雄</p><span class="final">賽後公布年度積分冠軍</span><a class="go stretch" href="huanyu.html">賽事資訊 →</a></div>
+    </article>
+  </div>
+
+  <div class="floor-head"><h3><span class="sport">Off the Floor</span>集訓營</h3><p>摩登、拉丁各自最多加 30 分</p></div>
+  <div class="camps4">
+    <div class="cp tilt"><span class="pts">+10</span><span class="style mo">摩登</span><span class="when">JAN 26–27 · 寒假</span><h4>星苑舞蹈摩登寒訓營</h4><p>2027/1/26（二）–1/27（三）</p><a class="go stretch" href="winter-modern.html">營隊資訊 →</a></div>
+    <div class="cp tilt"><span class="pts">+10</span><span class="style la">拉丁</span><span class="when">JAN 28–29 · 寒假</span><h4>星苑舞蹈拉丁寒訓營</h4><p>2027/1/28（四）–1/29（五）</p><a class="go stretch" href="winter-latin.html">營隊資訊 →</a></div>
+    <div class="cp tilt both"><span class="pts">+10</span><span class="style bo">摩登＋拉丁</span><span class="when">MAR 20 · 台中</span><h4>國際世界名師訓練營</h4><p>星苑大獎賽前一天，摩登、拉丁積分都採計</p><a class="go stretch" href="masters.html">營隊資訊 →</a></div>
+    <div class="cp tilt"><span class="pts">+10</span><span class="style mo">摩登</span><span class="when">SUMMER · 暑假</span><h4>星苑摩登造星營</h4><p>全程雙外師教學</p><a class="go stretch" href="summer-modern.html">營隊資訊 →</a></div>
+    <div class="cp tilt"><span class="pts">+10</span><span class="style la">拉丁</span><span class="when">SUMMER · 暑假</span><h4>星苑拉丁造星營</h4><p>全程雙外師教學</p><a class="go stretch" href="summer-latin.html">營隊資訊 →</a></div>
+  </div>
+
+  <div class="judges"><span class="chip">國際賽事規格</span>外國評審過半，國內評審持有 WDO、WDC、CTDSF 裁判證</div>
+</div></section>
+
+<section id="points" class="alt"><div class="wrap">
+  <div class="head"><span class="kicker">Points System</span><h2><span class="zh-bold">積分制度</span></h2><p>以下五個單人組別列入聯賽積分，摩登、拉丁分開計算。</p></div>
+  <div class="divs">
+    <div class="dv tilt"><b>U8</b><span>8 歲以下</span><em>三項標準組</em></div>
+    <div class="dv tilt"><b>U10</b><span>10 歲以下</span><em>五項標準組</em></div>
+    <div class="dv tilt"><b>U12</b><span>12 歲以下</span><em>五項標準組</em></div>
+    <div class="dv tilt"><b>U14</b><span>14 歲以下</span><em>五項花步組</em></div>
+    <div class="dv tilt"><b>U16</b><span>16 歲以下</span><em>五項花步組</em></div>
+  </div>
+  <div class="rules">
+    <div class="board">
+      <table>
+        <thead><tr><th>#</th><th>名次</th><th class="r">積分</th></tr></thead>
+        <tbody>
+          <tr class="top"><td class="rk">01</td><td>冠軍</td><td class="p">30</td></tr>
+          <tr class="top"><td class="rk">02</td><td>亞軍</td><td class="p">25</td></tr>
+          <tr class="top"><td class="rk">03</td><td>季軍</td><td class="p">21</td></tr>
+          <tr><td class="rk">04</td><td>第 4 名</td><td class="p">18</td></tr>
+          <tr><td class="rk">05</td><td>第 5 名</td><td class="p">16</td></tr>
+          <tr><td class="rk">06</td><td>第 6 名</td><td class="p">14</td></tr>
+          <tr><td class="rk">SF</td><td>準決賽</td><td class="p">10</td></tr>
+          <tr><td class="rk">R</td><td>複賽</td><td class="p">6</td></tr>
+          <tr><td class="rk">—</td><td>有出賽</td><td class="p">3</td></tr>
+        </tbody>
+      </table>
+      <p class="board-note">名次採該組最終總名次（Skating System），不看單支舞名次。</p>
+    </div>
+    <div class="side">
+      <div><h3>人數加權 <span class="kicker">Field Size</span></h3>
+        <div class="coef"><div><b>×0.8</b><span>6 組以下</span></div><div><b>×1.0</b><span>7–12 組</span></div><div><b>×1.2</b><span>13 組以上</span></div></div></div>
+      <div><h3>集訓加分 <span class="kicker">Camp Bonus</span></h3>
+        <div class="bonus"><b>+10</b><p>每參加一場集訓營加 10 分。摩登積分採計摩登寒訓營、摩登造星營與名師訓練營；拉丁積分採計拉丁寒訓營、拉丁造星營與名師訓練營，各自最多加 30 分。</p></div></div>
+      <div><h3>同分決勝 <span class="kicker">Tie-break</span></h3>
+        <ol class="tie"><li>兩場之中最佳名次較好者</li><li>參賽人數較多的那一場，名次較佳者</li><li>兩場決賽的裁判名次分數加總</li></ol></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="rewards"><div class="wrap">
+  <div class="head"><span class="kicker">Rewards</span><h2><span class="zh-bold">聯賽獎勵</span></h2><p>摩登、拉丁各組分別頒發。</p></div>
+  <div class="prize-hero">
+    <span class="kicker">Champion Scholarship</span>
+    <div class="amt num"><small>NT$</small>10,000</div>
+    <h3>積分冠軍　出國獎學金</h3>
+    <p><a href="worldcup.html" style="color:var(--bg);font-weight:900">2027 協會帶隊：深圳世界盃國標舞環球巨星公開賽 →</a></p>
+  </div>
+  <div class="perks">
+    <div class="perk tilt"><span class="who">Top 3</span><h3>品牌現金券</h3>
+      <table class="vouch"><thead><tr><th>名次</th><th>ADS 舞鞋</th><th>皇朝舞服</th></tr></thead>
+        <tbody><tr><td>第一名</td><td class="p">700</td><td class="p">1,500</td></tr><tr><td>第二名</td><td class="p">500</td><td class="p">1,000</td></tr><tr><td>第三名</td><td class="p">500</td><td class="p">500</td></tr></tbody></table></div>
+    <div class="perk tilt"><span class="who">Top 3</span><h3>舞動魂頻道示範舞者</h3><p>獲選為 Dance Passion 舞動魂頻道教學影片的示範舞者。</p></div>
+    <div class="perk tilt"><span class="who">All Finishers</span><h3>營隊學費 75 折</h3><p>聯賽完賽者報名下一年度寒訓營、造星營，享營隊學費（原價）75 折。</p></div>
+  </div>
+  <p class="fine">※ 各獎項均不重複領取　※ 主辦方保有最終活動解釋之權利</p>
+</div></section>
+
+<section id="calc" class="alt"><div class="wrap">
+  <div class="head"><span class="kicker">Calculator</span><h2><span class="zh-bold">積分試算</span></h2><p>輸入兩場名次與該組參賽人數，馬上算出年度積分。</p></div>
+  <div class="score">
+    <div class="in">
+      <div class="legs">
+        <div class="leg"><h4><span class="chip red">R1</span>星苑大獎賽</h4>
+          <label for="p1">名次<select id="p1"></select></label>
+          <label for="n1">該組參賽人數<input id="n1" type="number" min="1" max="99" value="10" inputmode="numeric"></label></div>
+        <div class="leg"><h4><span class="chip red">R2</span>寰宇盃</h4>
+          <label for="p2">名次<select id="p2"></select></label>
+          <label for="n2">該組參賽人數<input id="n2" type="number" min="1" max="99" value="14" inputmode="numeric"></label></div>
+      </div>
+      <div class="leg"><h4>計分項目</h4>
+        <div class="camps-in" role="radiogroup" aria-label="計分項目">
+          <label><input type="radio" name="sty" id="sMo" value="mo" checked><span>摩登</span></label>
+          <label><input type="radio" name="sty" id="sLa" value="la"><span>拉丁</span></label>
+        </div></div>
+      <div class="leg"><h4>參加的集訓營（每場 +10）</h4>
+        <div class="camps-in" role="group" aria-label="參加的集訓營">
+          <label><input type="checkbox" id="c0" checked><span id="l0">摩登寒訓營</span></label>
+          <label><input type="checkbox" id="c1" checked><span>名師訓練營</span></label>
+          <label><input type="checkbox" id="c2"><span id="l2">摩登造星營</span></label>
+        </div></div>
+    </div>
+    <div class="out" aria-live="polite">
+      <span class="kicker">Total Points</span>
+      <span class="total num" id="total">0</span>
+      <span class="break num" id="breakdown"></span>
+      <span class="warn" id="warn" hidden>兩場都要出賽，才列入年度積分排名</span>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer id="contact"><div class="wrap">
+  <div class="head" style="margin:0"><span class="kicker">Contact</span><h2><span class="zh-bold">報名與洽詢</span></h2></div>
+  <div class="contact">
+    <div><span>Dance Passion 教室</span><b>04-3503-2530</b></div>
+    <div><span>許老師</span><b>0914-011013</b></div>
+    <div><span>侯老師</span><b>0920-939313</b></div>
+    <div><span>Email</span><b class="mail">dancepassion@kimo.com</b></div>
+  </div><a class="ig" href="https://www.instagram.com/xinyu_dance_league/" target="_blank" rel="noopener"><span class="ig-k">INSTAGRAM</span><b>@xinyu_dance_league</b><span class="ig-go">追蹤最新消息 →</span></a>
+  <p class="org">主辦　中華民國運動舞蹈訓練發展協會　｜　承辦　Dance Passion 許均任侯婉綾舞蹈學苑</p>
+</div></footer>
+
+<script>
+(function(){
+  // 計分試算
+  var places=[['冠軍',30],['亞軍',25],['季軍',21],['第 4 名',18],['第 5 名',16],['第 6 名',14],['準決賽',10],['複賽',6],['有出賽',3],['未出賽',0]];
+  var p1=document.getElementById('p1'),p2=document.getElementById('p2'),n1=document.getElementById('n1'),n2=document.getElementById('n2'),tot=document.getElementById('total');
+  [p1,p2].forEach(function(s,i){places.forEach(function(p){var o=document.createElement('option');o.value=p[1];o.textContent=p[0]+(p[1]?'（'+p[1]+' 分）':'');s.appendChild(o);});s.selectedIndex=i===0?2:0;});
+  function coef(n){n=+n||0;return n<=6?0.8:(n<=12?1.0:1.2);}
+  function r(x){return Math.round(x*10)/10;}
+  function calc(){
+    var a1=+p1.value,a2=+p2.value,k1=coef(n1.value),k2=coef(n2.value),s1=r(a1*k1),s2=r(a2*k2);
+    var camps=['c0','c1','c2'].filter(function(c){return document.getElementById(c).checked;}).length*10;
+    tot.textContent=r(s1+s2+camps);
+    tot.classList.add('bump');setTimeout(function(){tot.classList.remove('bump');},180);
+    document.getElementById('breakdown').textContent='R1 '+a1+'×'+k1.toFixed(1)+' ＋ R2 '+a2+'×'+k2.toFixed(1)+' ＋ 集訓 '+camps;
+    document.getElementById('warn').hidden=!(a1===0||a2===0);
+  }
+  document.querySelectorAll('#calc select,#calc input').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc);});
+  document.querySelectorAll('input[name=sty]').forEach(function(r){r.addEventListener('change',function(){var la=document.getElementById('sLa').checked;document.getElementById('l0').textContent=la?'拉丁寒訓營':'摩登寒訓營';document.getElementById('l2').textContent=la?'拉丁造星營':'摩登造星營';calc();});});
+  calc();
+
+  // 幾何圖騰：固定種子，每次載入圖樣相同
+  var m=document.getElementById('motif');
+  if(m){var seed=27;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
+    var cols=['var(--volt)','var(--white)','#2b3038','#2b3038','var(--red)'];
+    for(var i=0;i<36;i++){var t=document.createElement('i');var v=rnd();
+      t.className=v<.55?'q':'';t.style.background=cols[Math.floor(rnd()*cols.length)];
+      var r0=Math.floor(rnd()*4)*90;t.dataset.r=r0;t.style.transform='rotate('+r0+'deg)';
+      t.addEventListener('mouseenter',function(){var c=parseInt((this.dataset.r||'0'),10)+90;this.dataset.r=c;this.style.transform='rotate('+c+'deg)';});
+      m.appendChild(t);}
+  }
+
+  // 3D 傾斜微互動（滑鼠裝置、未設定減少動態時）
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=window.matchMedia&&window.matchMedia('(hover: hover)').matches;
+  if(!reduce&&fine){
+    document.querySelectorAll('.tilt').forEach(function(el){
+      el.addEventListener('pointermove',function(e){var b=el.getBoundingClientRect();var x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;
+        el.style.transform='rotateY('+(x*14)+'deg) rotateX('+(-y*14)+'deg) translateY(-4px)';});
+      el.addEventListener('pointerleave',function(){el.style.transform='';});
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

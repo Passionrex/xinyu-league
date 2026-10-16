@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>星苑舞蹈摩登寒訓營｜2027 星宇聯賽</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,800;1,700;1,800;1,900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>:root{--bg:#0a0b0d;--card:#171a1f;--line:#262a31;--volt:#d4ff3a;--red:#ff3b3b;--white:#f5f6f2;--muted:#9097a2;--sport:"Barlow Condensed","Arial Narrow",Impact,sans-serif;--body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--white);font-family:var(--body);line-height:1.7;font-size:16px}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--volt);outline-offset:3px}
+.kicker{font-family:var(--sport);font-style:italic;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--volt)}
+nav{border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:rgba(10,11,13,.9);backdrop-filter:blur(10px);z-index:5}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px}
+.back{color:var(--white);text-decoration:none;font-weight:700}
+.back:hover{color:var(--volt)}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::after{content:"";position:absolute;top:0;bottom:0;right:10%;width:40%;background:linear-gradient(180deg,rgba(212,255,58,.10),transparent 70%);transform:skewX(-14deg);pointer-events:none}
+body.comp .hero{background:linear-gradient(135deg,#5a0a12 0%,#1a0406 60%,var(--bg) 100%)}
+body.comp .hero::after{background:linear-gradient(180deg,rgba(255,59,59,.18),transparent 70%)}
+.hero .wrap{position:relative;z-index:1;padding-block:56px 64px;display:grid;gap:14px;justify-items:start}
+h1{margin:0;font-size:clamp(2.2rem,8vw,4.4rem);line-height:1.1;font-weight:900}
+h1 .zh{display:inline-block;transform:skewX(-9deg);transform-origin:left}
+.date{font-family:var(--sport);font-style:italic;font-weight:900;font-size:clamp(4rem,16vw,8rem);line-height:.85;color:var(--volt);margin-top:10px}
+.date.zhd{font-family:var(--body);font-size:clamp(3rem,12vw,5.5rem);transform:skewX(-9deg);transform-origin:left}
+body.comp .date{color:var(--white)}
+.full{color:#c9ced6;font-size:1.05rem;margin:0}
+.chip{font-family:var(--body);font-weight:700;font-size:.85rem;padding:3px 12px}
+.chip.volt{border:1px solid var(--volt);color:var(--volt)}
+.chip.red{background:var(--red);color:#fff}
+main{padding-block:40px 64px;display:grid;gap:36px}
+h2{margin:0 0 14px;font-size:1.5rem;font-weight:900}
+.pts{background:var(--volt);color:var(--bg);padding:18px 22px;font-size:1.05rem;clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%)}
+body.comp .pts{background:var(--card);color:var(--white);border-left:6px solid var(--red);clip-path:none}
+.info{margin:0;display:grid;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:140px minmax(0,1fr);gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
+dt{color:var(--muted)}
+dd{margin:0;min-width:0}
+.tbd{color:var(--volt);font-weight:700}
+.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.contact div{background:var(--card);border:1px solid var(--line);padding:14px 16px;display:grid;min-width:0}
+.contact span{font-size:.8rem;color:var(--muted)}
+.contact b{font-family:var(--sport);font-weight:800;font-size:1.35rem;user-select:all;overflow-wrap:anywhere}
+.contact b.mail{font-family:var(--body);font-weight:700;font-size:1rem}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pn{background:var(--card);border:1px solid var(--line);padding:16px 18px;text-decoration:none;color:var(--white);display:grid;gap:2px;transition:border-color .2s,transform .2s;min-width:0}
+.pn:hover{border-color:var(--volt);transform:translateY(-3px)}
+.pn span{font-size:.82rem;color:var(--volt);font-weight:700}
+.pn b{font-weight:700}
+.pn.next{text-align:right}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:28px}
+@media (max-width:560px){.row{grid-template-columns:96px minmax(0,1fr)}.contact{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pn.next{text-align:left}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.ig{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin-top:12px;padding:16px 20px;background:var(--volt);color:var(--bg);text-decoration:none;clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);transition:transform .2s}.ig:hover{transform:translateY(-3px)}.ig-k{font-family:var(--sport);font-style:italic;font-weight:800;letter-spacing:.12em}.ig b{font-size:1.15rem;font-weight:900;overflow-wrap:anywhere}.ig-go{margin-left:auto;font-weight:700;font-size:.92rem}
+</style></head><body class="camp">
+<nav><div class="wrap"><a class="back" href="index.html">← 星宇聯賽</a><span class="kicker">Season 2027</span></div></nav>
+<header class="hero"><div class="wrap">
+  <span class="chip volt">摩登</span>
+  <span class="kicker">Winter Camp · Standard</span>
+  <h1><span class="zh">星苑舞蹈摩登寒訓營</span></h1>
+  <div class="date">1.26–27</div>
+  <p class="full">2027 年 1 月 26 日（二）– 27 日（三）</p>
+</div></header>
+<main class="wrap">
+  <div class="pts">參加可為<b>摩登積分 +10 分</b></div>
+  <h2>活動資訊</h2>
+  <dl class="info"><div class="row"><dt>時間</dt><dd><span class="tbd">即將公布</span></dd></div><div class="row"><dt>地點</dt><dd><span class="tbd">即將公布</span></dd></div><div class="row"><dt>師資</dt><dd><span class="tbd">即將公布</span></dd></div><div class="row"><dt>費用</dt><dd><span class="tbd">即將公布</span></dd></div></dl>
+  <div class="ask"><h2>報名與洽詢</h2>
+    <div class="contact"><div><span>Dance Passion 教室</span><b>04-3503-2530</b></div><div><span>許老師</span><b>0914-011013</b></div><div><span>侯老師</span><b>0920-939313</b></div><div><span>Email</span><b class="mail">dancepassion@kimo.com</b></div></div><a class="ig" href="https://www.instagram.com/xinyu_dance_league/" target="_blank" rel="noopener"><span class="ig-k">INSTAGRAM</span><b>@xinyu_dance_league</b><span class="ig-go">追蹤最新消息 →</span></a></div>
+  <div class="pager"><span></span><a class="pn next" href="winter-latin.html"><span>下一場 →</span><b>星苑舞蹈拉丁寒訓營</b></a></div>
+</main>
+<footer><div class="wrap"><a class="back" href="index.html#season">← 回到 2027 賽程</a></div></footer>
+</body></html>

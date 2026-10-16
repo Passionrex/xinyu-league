@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>2026 星宇聯賽積分榜</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,800;1,700;1,800;1,900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+:root{--bg:#0a0b0d;--bg-2:#121418;--card:#171a1f;--line:#262a31;--volt:#d4ff3a;--red:#ff3b3b;--white:#f5f6f2;--muted:#9097a2;--gold:#ffd166;--silver:#d6dbe3;--bronze:#e0a36b;--sport:"Barlow Condensed","Arial Narrow",Impact,sans-serif;--body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--white);font-family:var(--body);line-height:1.6;font-size:16px}
+.wrap{max-width:1000px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--volt);outline-offset:3px}
+.kicker{font-family:var(--sport);font-style:italic;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--volt)}
+.num{font-variant-numeric:tabular-nums}
+nav{border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:rgba(10,11,13,.9);backdrop-filter:blur(10px);z-index:5}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px}
+.back{color:var(--white);text-decoration:none;font-weight:700}
+.back:hover{color:var(--volt)}
+.hero{border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::before{content:"2026";position:absolute;right:-2%;bottom:-14%;font-family:var(--sport);font-style:italic;font-weight:900;font-size:clamp(8rem,26vw,18rem);line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(212,255,58,.16);pointer-events:none}
+.hero .wrap{position:relative;padding-block:52px 56px;display:grid;gap:14px}
+h1{margin:0;font-weight:900;font-size:clamp(2.4rem,8vw,4.4rem);line-height:1.05}
+h1 span{display:inline-block;transform:skewX(-9deg);transform-origin:left}
+.lead{color:#c9ced6;max-width:36em;margin:0}
+.rounds{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.rd{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);padding:10px 16px}
+.rd b{font-family:var(--sport);font-style:italic;font-weight:900;font-size:1.4rem}
+.rd .st{font-size:.8rem;font-weight:700;padding:2px 8px}
+.st.done{background:var(--volt);color:var(--bg)} .st.next{border:1px solid var(--red);color:var(--red)}
+main{padding-block:36px 72px;display:grid;gap:28px}
+.controls{display:grid;gap:12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 53px);background:var(--bg);z-index:4;padding-block:12px;border-bottom:1px solid var(--line)}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{font:inherit;font-weight:700;color:#c9ced6;background:var(--card);border:1px solid var(--line);padding:8px 16px;cursor:pointer;transition:all .2s}
+.seg button:hover{border-color:#3a404a;color:var(--white)}
+.seg button[aria-pressed="true"]{background:var(--volt);border-color:var(--volt);color:var(--bg)}
+.seg.style button{font-family:var(--sport);font-style:italic;font-size:1.15rem;letter-spacing:.04em;padding:6px 22px}
+.seg.style button span{font-family:var(--body);font-style:normal;font-size:.95rem;margin-left:6px}
+.board-head{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
+.board-head h2{margin:0;font-size:clamp(1.6rem,5vw,2.4rem);font-weight:900}
+.board-head h2 .div{font-family:var(--sport);font-style:italic;color:var(--volt);margin-right:10px}
+.board-head p{color:var(--muted);font-size:.88rem;margin:0}
+.tbl{overflow-x:auto;border:1px solid var(--line);background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-variant-numeric:tabular-nums}
+th{font-family:var(--sport);font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.95rem;color:var(--bg);background:var(--volt);text-align:left;padding:10px 14px;white-space:nowrap}
+th.r,td.r{text-align:right}
+td{padding:12px 14px;border-top:1px solid var(--line);white-space:nowrap}
+tbody tr{transition:background .15s}
+tbody tr:hover{background:#1f242b}
+.pos{font-family:var(--sport);font-style:italic;font-weight:900;font-size:1.7rem;width:3.2em}
+tr.p1 .pos{color:var(--gold)} tr.p2 .pos{color:var(--silver)} tr.p3 .pos{color:var(--bronze)}
+tr.p1{box-shadow:inset 4px 0 0 var(--gold)} tr.p2{box-shadow:inset 4px 0 0 var(--silver)} tr.p3{box-shadow:inset 4px 0 0 var(--bronze)}
+.name b{font-weight:700;font-size:1.02rem}
+.name small{display:block;color:var(--muted);font-size:.8rem}
+.cell{display:grid;justify-items:end;line-height:1.2}
+.cell b{font-family:var(--sport);font-weight:800;font-size:1.25rem}
+.cell small{color:var(--muted);font-size:.75rem}
+.dash{color:#4a505a}
+.total{font-family:var(--sport);font-style:italic;font-weight:900;font-size:1.9rem;color:var(--volt)}
+.empty{padding:48px 20px;text-align:center;display:grid;gap:8px;justify-items:center;border-top:1px solid var(--line)}
+.empty b{font-size:1.15rem}
+.empty p{color:var(--muted);margin:0;max-width:30em}
+.notes{display:grid;gap:8px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);padding-top:20px}
+.notes b{color:var(--white)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.82rem;color:var(--muted)}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:28px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<nav><div class="wrap"><a class="back" href="index.html">← 星宇聯賽</a><span class="kicker">Standings 2026</span></div></nav>
+<header class="hero"><div class="wrap">
+  <span class="kicker">Season 2026 · Live Standings</span>
+  <h1><span>2026 積分排行榜</span></h1>
+  <p class="lead">U8 到 U16 五個單人組別，摩登、拉丁分開計分。兩場比賽都完賽，才列入最終排名；寰宇盃結束後公布年度積分冠軍。</p>
+  <div class="rounds">
+    <div class="rd"><b>R1</b><span>星苑大獎賽 3/15</span><span class="st done">已完賽</span></div>
+    <div class="rd"><b>R2</b><span>寰宇盃 11/14</span><span class="st next">即將開賽</span></div>
+  </div>
+</div></header>
+
+<main class="wrap">
+  <div class="controls">
+    <div class="seg style" id="segStyle" role="group" aria-label="舞科"></div>
+    <div class="seg" id="segDiv" role="group" aria-label="組別"></div>
+  </div>
+  <section>
+    <div class="board-head"><h2 id="bTitle"></h2><p id="bSub"></p></div>
+    <div class="tbl" style="margin-top:14px"><table>
+      <thead><tr><th>#</th><th>選手</th><th class="r">R1 星苑大獎賽</th><th class="r">R2 寰宇盃</th><th class="r">總積分</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table><div id="empty" class="empty" hidden><b>第一場成績整理中</b><p>星苑大獎賽的積分正在核算，公布後會顯示在這裡。</p></div></div>
+  </section>
+  <div class="notes">
+    <div class="legend"><span>積分＝名次積分 × 人數加權</span><span>冠軍 30 · 亞軍 25 · 季軍 21 · 4th 18 · 5th 16 · 6th 14 · 準決賽 10 · 複賽 6 · 有出賽 3</span><span>加權：6 組以下 ×0.8 · 7–12 組 ×1.0 · 13 組以上 ×1.2</span></div>
+    <p><b>同分決勝：</b>兩場之中最佳名次較好者 → 參賽人數較多的那一場名次較佳者 → 兩場決賽的裁判名次分數加總。</p>
+    <p>名次採該組最終總名次（Skating System）。2026 賽季無營隊加分。</p>
+  </div>
+</main>
+<footer><div class="wrap" style="display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between"><a class="back" href="index.html">← 回到星宇聯賽</a><a class="back" href="https://www.instagram.com/xinyu_dance_league/" target="_blank" rel="noopener" style="color:var(--volt)">Instagram @xinyu_dance_league →</a></div></footer>
+
+<script>
+/* ===== 成績資料：每組填入兩場的參賽人數與名次 =====
+   place 可填 1–6、"SF"（準決賽）、"R"（複賽）、"P"（有出賽）
+   範例：{name:"王O明", studio:"Dance Passion", r1:1, r2:null}            */
+var DATA={
+  meta:{r1n:{}, r2n:{}},   // 例：r1n:{"mo-U8":9,"la-U8":7}
+  mo:{U8:[],U10:[],U12:[],U14:[],U16:[]},
+  la:{U8:[],U10:[],U12:[],U14:[],U16:[]}
+};
+/* ===================================================== */
+var DIVS=[['U8','8 歲以下 三項標準組'],['U10','10 歲以下 五項標準組'],['U12','12 歲以下 五項標準組'],['U14','14 歲以下 五項花步組'],['U16','16 歲以下 五項花步組']];
+var STY=[['mo','Standard','摩登'],['la','Latin','拉丁']];
+var PTS={1:30,2:25,3:21,4:18,5:16,6:14,SF:10,R:6,P:3};
+var LBL={1:'冠軍',2:'亞軍',3:'季軍',4:'第4名',5:'第5名',6:'第6名',SF:'準決賽',R:'複賽',P:'有出賽'};
+var RANK={1:1,2:2,3:3,4:4,5:5,6:6,SF:7,R:8,P:9};
+function coef(n){if(!n)return 1;return n<=6?0.8:(n<=12?1.0:1.2);}
+function r1(x){return Math.round(x*10)/10;}
+var st='mo',dv='U8';
+function seg(id,items,cur,cb,html){var el=document.getElementById(id);el.innerHTML='';items.forEach(function(it){var b=document.createElement('button');b.type='button';b.innerHTML=html(it);b.setAttribute('aria-pressed',it[0]===cur);b.onclick=function(){cb(it[0]);};el.appendChild(b);});}
+function render(){
+  seg('segStyle',STY,st,function(v){st=v;render();},function(it){return it[1]+'<span>'+it[2]+'</span>';});
+  seg('segDiv',DIVS,dv,function(v){dv=v;render();},function(it){return it[0];});
+  var d=DIVS.filter(function(x){return x[0]===dv;})[0], s=STY.filter(function(x){return x[0]===st;})[0];
+  document.getElementById('bTitle').innerHTML='<span class="div">'+dv+'</span>'+s[2]+' · '+d[1];
+  var key=st+'-'+dv,n1=DATA.meta.r1n[key],n2=DATA.meta.r2n[key];
+  document.getElementById('bSub').textContent='R1 參賽 '+(n1?n1+' 人（×'+coef(n1).toFixed(1)+'）':'—')+'　R2 參賽 '+(n2?n2+' 人（×'+coef(n2).toFixed(1)+'）':'—');
+  var list=(DATA[st][dv]||[]).map(function(p){
+    var a=p.r1!=null?r1(PTS[p.r1]*coef(n1)):null,b=p.r2!=null?r1(PTS[p.r2]*coef(n2)):null;
+    var best=Math.min(p.r1!=null?RANK[p.r1]:99,p.r2!=null?RANK[p.r2]:99);
+    var big=(n1||0)>=(n2||0)?p.r1:p.r2;
+    return {p:p,a:a,b:b,t:r1((a||0)+(b||0)),best:best,big:big!=null?RANK[big]:99,tb:p.tb||0};
+  }).sort(function(x,y){return y.t-x.t||x.best-y.best||x.big-y.big||x.tb-y.tb;});
+  var tb=document.getElementById('rows');tb.innerHTML='';
+  document.getElementById('empty').hidden=list.length>0;
+  list.forEach(function(x,i){
+    var tr=document.createElement('tr');if(i<3)tr.className='p'+(i+1);
+    function cell(pl,v){return pl==null?'<span class="dash">—</span>':'<div class="cell"><b>'+v+'</b><small>'+LBL[pl]+'</small></div>';}
+    tr.innerHTML='<td class="pos num">'+String(i+1).padStart(2,'0')+'</td><td class="name"><b></b><small></small></td><td class="r">'+cell(x.p.r1,x.a)+'</td><td class="r">'+cell(x.p.r2,x.b)+'</td><td class="r total num">'+x.t+'</td>';
+    tr.querySelector('.name b').textContent=x.p.name;tr.querySelector('.name small').textContent=x.p.studio||'';
+    tb.appendChild(tr);
+  });
+}
+render();
+</script>
+</body></html>
