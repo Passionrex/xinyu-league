@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="2027 星宇聯賽：星苑大獎賽與寰宇盃兩場運動舞蹈國際公開賽，加上五場集訓營。U8–U16 單人組別摩登、拉丁分開計分，各組積分冠軍獲得 NT$10,000 出國獎學金。">
+<meta name="description" content="2027 星宇聯賽：星苑大獎賽與寰宇盃兩場運動舞蹈國際公開賽，加上五場集訓營。U8–U21 單人組別摩登、拉丁分開計分，各組積分冠軍獲得 NT$10,000 出國獎學金。">
 <meta property="og:title" content="2027 星宇聯賽 Xin-Yu League">
 <meta property="og:description" content="兩場國際公開賽＋五場集訓營，積分冠軍獲得出國獎學金。">
 <meta property="og:type" content="website">
@@ -103,9 +103,10 @@ section.alt{background:var(--bg-2)}
 .judges .chip{background:var(--white);color:var(--bg)}
 
 /* divisions: tilt cards */
-.divs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:56px;perspective:900px}
+.divs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-bottom:56px;perspective:900px}
 .dv{background:linear-gradient(160deg,#1d2127,#121418);border:1px solid var(--line);padding:22px 16px 18px;display:grid;gap:6px;transform-style:preserve-3d;transition:transform .15s ease-out,border-color .25s;will-change:transform;position:relative}
 .dv:hover{border-color:var(--volt)}
+@media (max-width:1000px){.divs{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .dv b{font-family:var(--sport);font-style:italic;font-weight:900;font-size:3.2rem;line-height:.9;color:var(--volt);transform:translateZ(30px)}
 .dv span{font-size:.88rem;color:#c9ced6;transform:translateZ(18px)}
 .dv em{font-style:normal;font-size:.75rem;color:var(--muted);transform:translateZ(10px)}
@@ -271,7 +272,6 @@ footer h2{font-size:clamp(2rem,5vw,3rem)}
 
 @media (max-width:860px){
   .divs{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .divs .dv:last-child{grid-column:1/-1}
   .rules{grid-template-columns:1fr}
   .perks{grid-template-columns:1fr}
   .score{grid-template-columns:1fr}
@@ -374,8 +374,8 @@ nav .lbl-m,nav .only-m{display:none}
 </div></header>
 
 <div class="ticker" aria-hidden="true"><div class="track">
-  <span>Xin-Yu League 2027</span><span><b>星苑大獎賽</b> 3.21</span><span>Points Race</span><span><b>寰宇盃</b> Nov</span><span>U8 · U10 · U12 · U14 · U16</span><span>Champion Scholarship $10,000</span>
-  <span>Xin-Yu League 2027</span><span><b>星苑大獎賽</b> 3.21</span><span>Points Race</span><span><b>寰宇盃</b> Nov</span><span>U8 · U10 · U12 · U14 · U16</span><span>Champion Scholarship $10,000</span>
+  <span>Xin-Yu League 2027</span><span><b>星苑大獎賽</b> 3.21</span><span>Points Race</span><span><b>寰宇盃</b> Nov</span><span>U8 · U10 · U12 · U14 · U16 · U21</span><span>Champion Scholarship $10,000</span>
+  <span>Xin-Yu League 2027</span><span><b>星苑大獎賽</b> 3.21</span><span>Points Race</span><span><b>寰宇盃</b> Nov</span><span>U8 · U10 · U12 · U14 · U16 · U21</span><span>Champion Scholarship $10,000</span>
 </div></div>
 
 <main>
@@ -418,13 +418,14 @@ nav .lbl-m,nav .only-m{display:none}
 </div></section>
 
 <section id="points" class="alt"><div class="wrap">
-  <div class="head"><span class="kicker">Points System</span><h2><span class="zh-bold">積分制度</span></h2><p>以下五個單人組別列入聯賽積分，摩登、拉丁分開計算。</p></div>
+  <div class="head"><span class="kicker">Points System</span><h2><span class="zh-bold">積分制度</span></h2><p>以下六個單人組別列入聯賽積分，摩登、拉丁分開計算。</p></div>
   <div class="divs">
     <div class="dv tilt"><b>U8</b><span>8 歲以下</span><em>三項標準組</em></div>
     <div class="dv tilt"><b>U10</b><span>10 歲以下</span><em>五項標準組</em></div>
     <div class="dv tilt"><b>U12</b><span>12 歲以下</span><em>五項標準組</em></div>
     <div class="dv tilt"><b>U14</b><span>14 歲以下</span><em>五項花步組</em></div>
     <div class="dv tilt"><b>U16</b><span>16 歲以下</span><em>五項花步組</em></div>
+    <div class="dv tilt"><b>U21</b><span>21 歲以下</span><em>五項花步組</em></div>
   </div>
   <div class="rules">
     <div class="board">
