@@ -105,7 +105,7 @@ ol.steps li b{font-family:var(--sport);font-style:italic;font-weight:800;color:v
   </div>
   <section>
     <div class="dname"><h2 id="dzh"></h2><span id="den"></span></div>
-    <div class="legend" style="margin:10px 0 14px"><span class="ya"><i></i>U8–U10 限定範圍</span><span class="yb"><i></i>U12–U14 可再使用</span></div>
+    <div class="legend" style="margin:10px 0 14px"><span class="ya"><i></i>U8–U10 限定範圍</span><span class="yb"><i></i>U12–U14 可增加使用</span></div>
     <div id="out" style="display:grid;gap:14px"></div>
   </section>
 
@@ -167,7 +167,7 @@ function render(){
   c.orgs.forEach(function(o,i){og.appendChild(btn(o.name,i===st.org,function(){st.org=i;render()}))});
   $("dzh").textContent=c.zh;$("den").textContent=c.en;
   var o=c.orgs[st.org],out=$("out");out.innerHTML="";
-  [["a","ya","U8–U10 限定範圍"],["b","yb","U12–U14 可再使用"]].forEach(function(p){
+  [["a","ya","U8–U10 限定範圍"],["b","yb","U12–U14 可增加使用"]].forEach(function(p){
     var items=o[p[0]],d=document.createElement("div");d.className="block "+p[1];
     var h=document.createElement("h3");h.innerHTML="<span></span><small>"+items.length+" 項</small>";h.firstChild.textContent=p[2];d.appendChild(h);
     if(!items.length){var e=document.createElement("div");e.className="empty";e.textContent="此版本沒有額外範圍";d.appendChild(e)}
