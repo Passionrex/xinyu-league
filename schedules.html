@@ -89,7 +89,7 @@ main{gap:28px}
 <header class="hero"><div class="wrap">
   <span class="chip volt">賽程與課表</span>
   <span class="kicker">Timetables · 2027 Season</span>
-  <h1><span class="zh">比賽流程與營隊課表</span></h1>
+  <h1><span class="zh">賽事流程與營隊課表</span></h1>
   <p class="full">各場比賽的流程表、各營隊的課表，公布後都會放在這裡。</p>
 </div></header>
 <main class="wrap">
@@ -120,7 +120,7 @@ var cur="all";
 var $=function(i){return document.getElementById(i)};
 function renderFilter(){
   var f=$("filter");f.innerHTML="";
-  [["all","全部"],["comp","比賽流程"],["camp","營隊課表"]].forEach(function(o){
+  [["all","全部"],["comp","賽事流程"],["camp","營隊課表"]].forEach(function(o){
     var b=document.createElement("button");b.type="button";b.textContent=o[1];b.setAttribute("aria-pressed",o[0]===cur);
     b.onclick=function(){cur=o[0];renderFilter();renderList()};f.appendChild(b)});
 }
@@ -130,10 +130,10 @@ function renderList(){
     var docs=DOCS.filter(function(d){return d.event===e.id});
     var sec=document.createElement("section");sec.className="ev";sec.id=e.id;
     var h=document.createElement("div");h.className="ev-h";
-    h.innerHTML='<h2></h2><div class="meta"><span class="tag '+e.kind+'">'+(e.kind==="comp"?"比賽流程":"營隊課表")+'</span><span class="d"></span><a>活動資訊 →</a></div>';
+    h.innerHTML='<h2></h2><div class="meta"><span class="tag '+e.kind+'">'+(e.kind==="comp"?"賽事流程":"營隊課表")+'</span><span class="d"></span><a>活動資訊 →</a></div>';
     h.querySelector("h2").textContent=e.name;h.querySelector(".d").textContent=e.date;h.querySelector("a").href=e.page;
     sec.appendChild(h);
-    if(!docs.length){var n=document.createElement("div");n.className="none";n.textContent=e.kind==="comp"?"比賽流程尚未公布":"營隊課表尚未公布";sec.appendChild(n)}
+    if(!docs.length){var n=document.createElement("div");n.className="none";n.textContent=e.kind==="comp"?"賽事流程尚未公布":"營隊課表尚未公布";sec.appendChild(n)}
     else{
       var g=document.createElement("div");g.className="docs";
       docs.forEach(function(d){
