@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>賽程與課表｜2027 星宇聯賽</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,800;1,700;1,800;1,900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>:root{--bg:#0a0b0d;--card:#171a1f;--line:#262a31;--volt:#d4ff3a;--red:#ff3b3b;--white:#f5f6f2;--muted:#9097a2;--sport:"Barlow Condensed","Arial Narrow",Impact,sans-serif;--body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--white);font-family:var(--body);line-height:1.7;font-size:16px}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--volt);outline-offset:3px}
+.kicker{font-family:var(--sport);font-style:italic;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--volt)}
+nav{border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:rgba(10,11,13,.9);backdrop-filter:blur(10px);z-index:5}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:14px}
+.back{color:var(--white);text-decoration:none;font-weight:700}
+.back:hover{color:var(--volt)}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::after{content:"";position:absolute;top:0;bottom:0;right:10%;width:40%;background:linear-gradient(180deg,rgba(212,255,58,.10),transparent 70%);transform:skewX(-14deg);pointer-events:none}
+body.comp .hero{background:linear-gradient(135deg,#5a0a12 0%,#1a0406 60%,var(--bg) 100%)}
+body.comp .hero::after{background:linear-gradient(180deg,rgba(255,59,59,.18),transparent 70%)}
+.hero .wrap{position:relative;z-index:1;padding-block:56px 64px;display:grid;gap:14px;justify-items:start}
+h1{margin:0;font-size:clamp(2.2rem,8vw,4.4rem);line-height:1.1;font-weight:900}
+h1 .zh{display:inline-block;transform:skewX(-9deg);transform-origin:left}
+.date{font-family:var(--sport);font-style:italic;font-weight:900;font-size:clamp(4rem,16vw,8rem);line-height:.85;color:var(--volt);margin-top:10px}
+.date.zhd{font-family:var(--body);font-size:clamp(3rem,12vw,5.5rem);transform:skewX(-9deg);transform-origin:left}
+body.comp .date{color:var(--white)}
+.full{color:#c9ced6;font-size:1.05rem;margin:0}
+.chip{font-family:var(--body);font-weight:700;font-size:.85rem;padding:3px 12px}
+.chip.volt{border:1px solid var(--volt);color:var(--volt)}
+.chip.red{background:var(--red);color:#fff}
+main{padding-block:40px 64px;display:grid;gap:36px}
+h2{margin:0 0 14px;font-size:1.5rem;font-weight:900}
+.pts{background:var(--volt);color:var(--bg);padding:18px 22px;font-size:1.05rem;clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%)}
+body.comp .pts{background:var(--card);color:var(--white);border-left:6px solid var(--red);clip-path:none}
+.info{margin:0;display:grid;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:140px minmax(0,1fr);gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
+dt{color:var(--muted)}
+dd{margin:0;min-width:0}
+.tbd{color:var(--volt);font-weight:700}
+.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.contact div{background:var(--card);border:1px solid var(--line);padding:14px 16px;display:grid;min-width:0}
+.contact span{font-size:.8rem;color:var(--muted)}
+.contact b{font-family:var(--sport);font-weight:800;font-size:1.35rem;user-select:all;overflow-wrap:anywhere}
+.contact b.mail{font-family:var(--body);font-weight:700;font-size:1rem}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pn{background:var(--card);border:1px solid var(--line);padding:16px 18px;text-decoration:none;color:var(--white);display:grid;gap:2px;transition:border-color .2s,transform .2s;min-width:0}
+.pn:hover{border-color:var(--volt);transform:translateY(-3px)}
+.pn span{font-size:.82rem;color:var(--volt);font-weight:700}
+.pn b{font-weight:700}
+.pn.next{text-align:right}
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:28px}
+@media (max-width:560px){.row{grid-template-columns:96px minmax(0,1fr)}.contact{grid-template-columns:1fr}.pager{grid-template-columns:1fr}.pn.next{text-align:left}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.ig{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin-top:12px;padding:16px 20px;background:var(--volt);color:var(--bg);text-decoration:none;clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);transition:transform .2s}.ig:hover{transform:translateY(-3px)}.ig-k{font-family:var(--sport);font-style:italic;font-weight:800;letter-spacing:.12em}.ig b{font-size:1.15rem;font-weight:900;overflow-wrap:anywhere}.ig-go{margin-left:auto;font-weight:700;font-size:.92rem}
+
+main{gap:28px}
+.lead2{color:#c9ced6;margin:0}
+.filter{display:flex;flex-wrap:wrap;gap:8px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 53px);background:var(--bg);z-index:4;padding-block:12px;border-bottom:1px solid var(--line)}
+.filter button{font:inherit;font-weight:700;color:#c9ced6;background:var(--card);border:1px solid var(--line);padding:8px 16px;cursor:pointer;transition:all .2s}
+.filter button:hover{border-color:#3a404a;color:var(--white)}
+.filter button[aria-pressed="true"]{background:var(--volt);border-color:var(--volt);color:var(--bg)}
+.ev{border:1px solid var(--line);background:var(--card)}
+.ev-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 16px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.ev-h h2{margin:0;font-size:1.2rem}
+.ev-h .meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ev-h .d{font-family:var(--sport);font-style:italic;font-weight:800;color:var(--volt);font-size:1.15rem}
+.ev-h a{color:#c9ced6;font-size:.88rem;text-decoration:none}.ev-h a:hover{color:var(--volt)}
+.tag{font-size:.78rem;font-weight:700;padding:2px 10px;border:1px solid var(--line);color:#c9ced6}
+.tag.comp{border-color:var(--red);color:var(--red)}.tag.camp{border-color:var(--volt);color:var(--volt)}
+.docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;padding:16px 20px}
+.doc{display:grid;gap:8px;text-decoration:none;color:var(--white);background:var(--bg);border:1px solid var(--line);padding:12px;transition:border-color .2s,transform .2s;min-width:0}
+.doc:hover{border-color:var(--volt);transform:translateY(-3px)}
+.doc .th{aspect-ratio:4/3;background:#0f1114;display:grid;place-items:center;overflow:hidden}
+.doc .th img{width:100%;height:100%;object-fit:cover}
+.doc .th .pdf{font-family:var(--sport);font-style:italic;font-weight:900;font-size:2.4rem;color:var(--red)}
+.doc b{font-weight:700;overflow-wrap:anywhere}
+.doc small{color:var(--muted);font-size:.82rem}
+.none{padding:18px 20px;color:var(--muted)}
+.how{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--volt);padding:16px 20px;color:#c9ced6;font-size:.95rem}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:grid;place-items:center;z-index:50;padding:20px}
+.lb img{max-width:100%;max-height:85vh;object-fit:contain}
+.lb .x{position:absolute;top:14px;right:16px;display:flex;gap:10px}
+.lb .x a,.lb .x button{font:inherit;font-weight:700;color:var(--bg);background:var(--volt);border:0;padding:8px 14px;text-decoration:none;cursor:pointer}
+[hidden]{display:none!important}
+@media (max-width:560px){.docs{grid-template-columns:1fr 1fr;padding:12px}.ev-h{padding:14px 16px}}
+</style></head><body class="camp">
+<nav><div class="wrap"><a class="back" href="index.html">← 星宇聯賽</a><span class="kicker">Schedules</span>  <a href="https://dancepassionsoul.com/" target="_blank" rel="noopener">舞動魂</a>
+</div></nav>
+<header class="hero"><div class="wrap">
+  <span class="chip volt">賽程與課表</span>
+  <span class="kicker">Timetables · 2027 Season</span>
+  <h1><span class="zh">比賽流程與營隊課表</span></h1>
+  <p class="full">各場比賽的流程表、各營隊的課表，公布後都會放在這裡。</p>
+</div></header>
+<main class="wrap">
+  <div class="filter" id="filter" role="group" aria-label="類別"></div>
+  <div id="list" style="display:grid;gap:16px"></div>
+  <div class="how">流程表與課表會隨時更新，請以最新版本為準。如有疑問，請洽 Dance Passion 教室 04-3503-2530。</div>
+</main>
+<footer><div class="wrap"><a class="back" href="index.html">← 回到星宇聯賽首頁</a></div></footer>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="圖片預覽"><div class="x"><a id="lbOpen" href="#" target="_blank" rel="noopener">開新視窗</a><button type="button" id="lbClose">關閉</button></div><img id="lbImg" alt=""></div>
+<script>
+/* ===== 活動清單（kind: comp 比賽 / camp 營隊） ===== */
+var EVENTS=[
+  {id:"winter-modern",name:"星苑舞蹈摩登寒訓營",date:"1.26–27",kind:"camp",page:"winter-modern.html"},
+  {id:"winter-latin",name:"星苑舞蹈拉丁寒訓營",date:"1.28–29",kind:"camp",page:"winter-latin.html"},
+  {id:"masters",name:"國際世界名師訓練營",date:"3.20",kind:"camp",page:"masters.html"},
+  {id:"xingyuan",name:"星苑大獎賽",date:"3.21",kind:"comp",page:"xingyuan.html"},
+  {id:"summer-modern",name:"星苑摩登造星營",date:"暑假",kind:"camp",page:"summer-modern.html"},
+  {id:"summer-latin",name:"星苑拉丁造星營",date:"暑假",kind:"camp",page:"summer-latin.html"},
+  {id:"huanyu",name:"寰宇盃",date:"11月",kind:"comp",page:"huanyu.html"}
+];
+/* ===== 檔案清單：新增檔案就在這裡加一筆 =====
+   event：對應上面的 id；file：檔案路徑（放在 files/ 資料夾）；type：pdf 或 img
+   範例：{event:"winter-modern",title:"第一天課表",file:"files/winter-modern-day1.jpg",type:"img",updated:"2027-01-10"} */
+var DOCS=[
+];
+/* ================================================ */
+var cur="all";
+var $=function(i){return document.getElementById(i)};
+function renderFilter(){
+  var f=$("filter");f.innerHTML="";
+  [["all","全部"],["comp","比賽流程"],["camp","營隊課表"]].forEach(function(o){
+    var b=document.createElement("button");b.type="button";b.textContent=o[1];b.setAttribute("aria-pressed",o[0]===cur);
+    b.onclick=function(){cur=o[0];renderFilter();renderList()};f.appendChild(b)});
+}
+function renderList(){
+  var L=$("list");L.innerHTML="";
+  EVENTS.filter(function(e){return cur==="all"||e.kind===cur}).forEach(function(e){
+    var docs=DOCS.filter(function(d){return d.event===e.id});
+    var sec=document.createElement("section");sec.className="ev";sec.id=e.id;
+    var h=document.createElement("div");h.className="ev-h";
+    h.innerHTML='<h2></h2><div class="meta"><span class="tag '+e.kind+'">'+(e.kind==="comp"?"比賽流程":"營隊課表")+'</span><span class="d"></span><a>活動資訊 →</a></div>';
+    h.querySelector("h2").textContent=e.name;h.querySelector(".d").textContent=e.date;h.querySelector("a").href=e.page;
+    sec.appendChild(h);
+    if(!docs.length){var n=document.createElement("div");n.className="none";n.textContent=e.kind==="comp"?"比賽流程尚未公布":"營隊課表尚未公布";sec.appendChild(n)}
+    else{
+      var g=document.createElement("div");g.className="docs";
+      docs.forEach(function(d){
+        var a=document.createElement("a");a.className="doc";a.href=d.file;a.target="_blank";a.rel="noopener";
+        var th=document.createElement("div");th.className="th";
+        if(d.type==="img"){var im=document.createElement("img");im.src=d.file;im.alt=d.title;im.loading="lazy";th.appendChild(im);
+          a.onclick=function(ev){ev.preventDefault();$("lbImg").src=d.file;$("lbImg").alt=d.title;$("lbOpen").href=d.file;$("lb").hidden=false}}
+        else{th.innerHTML='<span class="pdf">PDF</span>'}
+        var t=document.createElement("b");t.textContent=d.title;
+        var s=document.createElement("small");s.textContent=(d.type==="img"?"圖片":"PDF")+(d.updated?" · 更新 "+d.updated:"");
+        a.appendChild(th);a.appendChild(t);a.appendChild(s);g.appendChild(a)});
+      sec.appendChild(g)}
+    L.appendChild(sec)});
+}
+function closeLb(){$("lb").hidden=true;$("lbImg").src=""}
+$("lbClose").onclick=closeLb;$("lb").onclick=function(e){if(e.target===this)closeLb()};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLb()});
+renderFilter();renderList();
+if(location.hash){var t=document.querySelector(location.hash);if(t)t.scrollIntoView()}
+</script>
+</body></html>
