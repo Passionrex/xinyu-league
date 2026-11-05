@@ -102,6 +102,7 @@ main{gap:28px}
 <script>
 /* ===== 活動清單（kind: comp 比賽 / camp 營隊） ===== */
 var EVENTS=[
+  {id:"huanyu-2026",name:"2026 寰宇盃",date:"11.14",kind:"comp",page:""},
   {id:"winter-modern",name:"星苑舞蹈摩登寒訓營",date:"1.26–27",kind:"camp",page:"winter-modern.html"},
   {id:"winter-latin",name:"星苑舞蹈拉丁寒訓營",date:"1.28–29",kind:"camp",page:"winter-latin.html"},
   {id:"masters",name:"國際世界名師訓練營",date:"3.20",kind:"camp",page:"masters.html"},
@@ -114,6 +115,10 @@ var EVENTS=[
    event：對應上面的 id；file：檔案路徑（放在 files/ 資料夾）；type：pdf 或 img
    範例：{event:"winter-modern",title:"第一天課表",file:"files/winter-modern-day1.jpg",type:"img",updated:"2027-01-10"} */
 var DOCS=[
+  {event:"huanyu-2026",title:"賽程表 第 1 頁（場次 1–12）",file:"files/huanyu-2026-p15.jpg",type:"img",updated:"2026-11-05"},
+  {event:"huanyu-2026",title:"賽程表 第 2 頁（場次 13–27）",file:"files/huanyu-2026-p16.jpg",type:"img",updated:"2026-11-05"},
+  {event:"huanyu-2026",title:"賽程表 第 3 頁（場次 28–41）",file:"files/huanyu-2026-p17.jpg",type:"img",updated:"2026-11-05"},
+  {event:"huanyu-2026",title:"賽程表 第 4 頁（場次 42–51）",file:"files/huanyu-2026-p18.jpg",type:"img",updated:"2026-11-05"}
 ];
 /* ================================================ */
 var cur="all";
@@ -131,7 +136,7 @@ function renderList(){
     var sec=document.createElement("section");sec.className="ev";sec.id=e.id;
     var h=document.createElement("div");h.className="ev-h";
     h.innerHTML='<h2></h2><div class="meta"><span class="tag '+e.kind+'">'+(e.kind==="comp"?"賽事流程":"營隊課表")+'</span><span class="d"></span><a>活動資訊 →</a></div>';
-    h.querySelector("h2").textContent=e.name;h.querySelector(".d").textContent=e.date;h.querySelector("a").href=e.page;
+    h.querySelector("h2").textContent=e.name;h.querySelector(".d").textContent=e.date;if(e.page)h.querySelector("a").href=e.page;else h.querySelector("a").remove();
     sec.appendChild(h);
     if(!docs.length){var n=document.createElement("div");n.className="none";n.textContent=e.kind==="comp"?"賽事流程尚未公布":"營隊課表尚未公布";sec.appendChild(n)}
     else{
