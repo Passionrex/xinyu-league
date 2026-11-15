@@ -56,6 +56,12 @@ tr.p1{box-shadow:inset 4px 0 0 var(--gold)} tr.p2{box-shadow:inset 4px 0 0 var(-
 .dash{color:#4a505a}
 .total{font-family:var(--sport);font-style:italic;font-weight:900;font-size:1.9rem;color:var(--volt)}
 [hidden]{display:none!important}
+.champ{margin-top:14px;background:var(--volt);color:var(--bg);padding:14px 20px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%)}
+.champ .k{font-family:var(--sport);font-style:italic;font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.95rem}
+.champ b{font-size:1.35rem;font-weight:900}
+.champ span.pt{font-weight:700}
+tr.sep td{background:var(--bg);color:var(--muted);font-size:.85rem;padding:10px 14px;white-space:normal}
+tr.out td{opacity:.55}
 .empty{padding:48px 20px;text-align:center;display:grid;gap:8px;justify-items:center;border-top:1px solid var(--line)}
 .empty b{font-size:1.15rem}
 .empty p{color:var(--muted);margin:0;max-width:30em}
@@ -70,12 +76,12 @@ footer .wrap{padding-block:28px}
 <nav><div class="wrap"><a class="back" href="index.html">← 星宇聯賽</a><span class="kicker">Standings 2026</span>  <a href="https://dancepassionsoul.com/" target="_blank" rel="noopener">舞動魂</a>
 </div></nav>
 <header class="hero"><div class="wrap">
-  <span class="kicker">Season 2026 · Live Standings</span>
-  <h1><span>2026 積分排行榜</span></h1>
-  <p class="lead">U8 到 U16 五個單人組別，摩登、拉丁分開計分。兩場比賽都完賽，才列入最終排名；寰宇盃結束後公布年度積分冠軍。</p>
+  <span class="kicker">Season 2026 · Final Standings</span>
+  <h1><span>2026 年度積分排行榜</span></h1>
+  <p class="lead">2026 賽季兩場比賽已全部完賽，年度積分正式結算。U8 到 U16 五個單人組別，摩登、拉丁分開計分；兩場都出賽的選手列入年度排名，只參加一場的選手列在下方，不列入排名。</p>
   <div class="rounds">
     <div class="rd"><b>R1</b><span>星苑大獎賽 3/15</span><span class="st done">已完賽</span></div>
-    <div class="rd"><b>R2</b><span>寰宇盃 11/14</span><span class="st next">即將開賽</span><a href="schedules.html#huanyu-2026" style="color:var(--volt);font-weight:700;text-decoration:none;font-size:.9rem">賽程表 →</a></div>
+    <div class="rd"><b>R2</b><span>寰宇盃 11/14</span><span class="st done">已完賽</span><a href="schedules.html#huanyu-2026" style="color:var(--volt);font-weight:700;text-decoration:none;font-size:.9rem">賽程表 →</a></div>
   </div>
 </div></header>
 
@@ -86,6 +92,7 @@ footer .wrap{padding-block:28px}
   </div>
   <section>
     <div class="board-head"><h2 id="bTitle"></h2><p id="bSub"></p></div>
+    <div class="champ" id="champ" hidden></div>
     <div class="tbl" style="margin-top:14px"><table>
       <thead><tr><th>#</th><th>選手</th><th class="r">R1<span class="hm"> 星苑大獎賽</span></th><th class="r">R2<span class="hm"> 寰宇盃</span></th><th class="r">總積分</th></tr></thead>
       <tbody id="rows"></tbody>
@@ -104,9 +111,9 @@ footer .wrap{padding-block:28px}
    place 可填 1–6、"SF"（準決賽）、"R"（複賽）、"P"（有出賽）
    範例：{name:"王O明", studio:"Dance Passion", r1:1, r2:null}            */
 var DATA={
-  meta:{r1n:{"mo-U8":2,"mo-U10":8,"mo-U12":13,"mo-U14":17,"mo-U16":11,"la-U8":15,"la-U10":16,"la-U12":19,"la-U14":19,"la-U16":12}, r2n:{}},
-  mo:{U8:[{"name":"蔡苡彤","r1":1,"r2":null},{"name":"吳允馨","r1":2,"r2":null}],U10:[{"name":"許宇岑","r1":1,"r2":null},{"name":"鄭熙恩","r1":2,"r2":null},{"name":"林若函","r1":3,"r2":null},{"name":"吳羿霏","r1":4,"r2":null},{"name":"趙金萱","r1":5,"r2":null},{"name":"李紹萌","r1":6,"r2":null},{"name":"曾仲誼","r1":"SF","r2":null},{"name":"劉彥均","r1":"SF","r2":null}],U12:[{"name":"宋語瑄","r1":1,"r2":null},{"name":"郭吳采蓁","r1":2,"r2":null},{"name":"劉玥","r1":3,"r2":null},{"name":"許宇岑","r1":4,"r2":null},{"name":"李姍檥","r1":5,"r2":null},{"name":"戴若妃","r1":6,"r2":null},{"name":"阮悅恩","r1":"SF","r2":null},{"name":"吳柏妤","r1":"SF","r2":null},{"name":"賴亮縈","r1":"R","r2":null},{"name":"張岑銥","r1":"R","r2":null},{"name":"曾柔熹","r1":"R","r2":null},{"name":"許舒涵","r1":"R","r2":null},{"name":"李宥誼","r1":"R","r2":null}],U14:[{"name":"宋語瑄","r1":1,"r2":null},{"name":"郭吳采蓁","r1":2,"r2":null},{"name":"曾羽彤","r1":3,"r2":null},{"name":"林恩正","r1":4,"r2":null},{"name":"廖昱婷","r1":5,"r2":null},{"name":"郭姲緹","r1":6,"r2":null},{"name":"許恩慈","r1":"SF","r2":null},{"name":"趙金翎","r1":"SF","r2":null},{"name":"陳聖煒","r1":"SF","r2":null},{"name":"蘇珝喬","r1":"R","r2":null},{"name":"陳語柔","r1":"R","r2":null},{"name":"羅以婷","r1":"R","r2":null},{"name":"吳幸恩","r1":"R","r2":null},{"name":"石霈萱","r1":"R","r2":null},{"name":"戴亞節","r1":"R","r2":null},{"name":"蕭詩芮","r1":"R","r2":null},{"name":"盧宥安","r1":"R","r2":null}],U16:[{"name":"楊絜涵","r1":1,"r2":null},{"name":"曾羽彤","r1":2,"r2":null},{"name":"陳品妍","r1":3,"r2":null},{"name":"黃永騰","r1":4,"r2":null},{"name":"廖昱婷","r1":5,"r2":null},{"name":"郭姲緹","r1":6,"r2":null},{"name":"林昕樂","r1":"SF","r2":null},{"name":"許恩慈","r1":"SF","r2":null},{"name":"林俊安","r1":"R","r2":null},{"name":"石霈萱","r1":"R","r2":null},{"name":"游立安","r1":"R","r2":null}]},
-  la:{U8:[{"name":"蔡苡彤","r1":1,"r2":null},{"name":"連歆媛","r1":2,"r2":null},{"name":"鄭丁綺","r1":3,"r2":null},{"name":"司昕儒","r1":4,"r2":null},{"name":"程翌昕","r1":5,"r2":null},{"name":"江淳凈","r1":6,"r2":null},{"name":"Chong Wen Xian 张雯仙","r1":"SF","r2":null},{"name":"Taylie Ang Ern Xi 洪恩熙","r1":"SF","r2":null},{"name":"仇芯霈","r1":"R","r2":null},{"name":"吳允馨","r1":"R","r2":null},{"name":"郭俊鋙","r1":"R","r2":null},{"name":"謝侑璇","r1":"R","r2":null},{"name":"許瑀心","r1":"R","r2":null},{"name":"劉彥","r1":"R","r2":null},{"name":"劉亦","r1":"R","r2":null}],U10:[{"name":"許宇岑","r1":1,"r2":null},{"name":"Vitas Ng Sen Yang 黄森阳","r1":2,"r2":null},{"name":"鄭熙恩","r1":3,"r2":null},{"name":"周亞璇","r1":4,"r2":null},{"name":"楊芮菲","r1":5,"r2":null},{"name":"吳羿霏","r1":6,"r2":null},{"name":"林若函","r1":"SF","r2":null},{"name":"李紹萌","r1":"SF","r2":null},{"name":"陳宣穎","r1":"R","r2":null},{"name":"劉芯維","r1":"R","r2":null},{"name":"王唯珊","r1":"R","r2":null},{"name":"何芮彤","r1":"R","r2":null},{"name":"蔡巧儀","r1":"R","r2":null},{"name":"歐陽仕玹","r1":"R","r2":null},{"name":"賴芯晴","r1":"R","r2":null},{"name":"游天嵐","r1":"R","r2":null}],U12:[{"name":"宋語瑄","r1":1,"r2":null},{"name":"郭吳采蓁","r1":2,"r2":null},{"name":"李姍檥","r1":3,"r2":null},{"name":"劉玥","r1":4,"r2":null},{"name":"許宇岑","r1":5,"r2":null},{"name":"邵佩羚","r1":6,"r2":null},{"name":"陳品辰","r1":"SF","r2":null},{"name":"阮悅恩","r1":"SF","r2":null},{"name":"陳玉釩","r1":"R","r2":null},{"name":"周亞璇","r1":"R","r2":null},{"name":"張榕晅","r1":"R","r2":null},{"name":"林薇恩","r1":"R","r2":null},{"name":"丘詩盈","r1":"R","r2":null},{"name":"戴若妃","r1":"R","r2":null},{"name":"何芸逸","r1":"R","r2":null},{"name":"許舒涵","r1":"R","r2":null},{"name":"李宥誼","r1":"P","r2":null},{"name":"陳若竹","r1":"P","r2":null},{"name":"李喬淅","r1":"P","r2":null}],U14:[{"name":"宋語瑄","r1":1,"r2":null},{"name":"郭吳采蓁","r1":2,"r2":null},{"name":"林恩正","r1":3,"r2":null},{"name":"林采潔","r1":4,"r2":null},{"name":"曾羽彤","r1":5,"r2":null},{"name":"蘇珝喬","r1":6,"r2":null},{"name":"林宣余","r1":"SF","r2":null},{"name":"蔡心彤","r1":"SF","r2":null},{"name":"顏暄紜","r1":"R","r2":null},{"name":"許恩慈","r1":"R","r2":null},{"name":"郭姲緹","r1":"R","r2":null},{"name":"吳幸恩","r1":"R","r2":null},{"name":"羅以婷","r1":"R","r2":null},{"name":"廖昱婷","r1":"R","r2":null},{"name":"鄭詩縈","r1":"R","r2":null},{"name":"盧宥安","r1":"R","r2":null},{"name":"蔡洺涓","r1":"P","r2":null},{"name":"蕭詩芮","r1":"P","r2":null},{"name":"楊海柔","r1":"P","r2":null}],U16:[{"name":"楊絜涵","r1":1,"r2":null},{"name":"林采潔","r1":2,"r2":null},{"name":"陳品妍","r1":3,"r2":null},{"name":"莊婕琳","r1":4,"r2":null},{"name":"蔡心彤","r1":5,"r2":null},{"name":"Evangeline Law Le Xuan","r1":6,"r2":null},{"name":"許恩慈","r1":"SF","r2":null},{"name":"郭姲緹","r1":"SF","r2":null},{"name":"Jody Yan Jia Xin","r1":"R","r2":null},{"name":"廖昱婷","r1":"R","r2":null},{"name":"黃永騰","r1":"R","r2":null},{"name":"陳姿吟","r1":"R","r2":null}]}
+  meta:{r1n:{"mo-U8":2,"mo-U10":8,"mo-U12":13,"mo-U14":17,"mo-U16":11,"la-U8":15,"la-U10":16,"la-U12":19,"la-U14":19,"la-U16":12}, r2n:{"mo-U8":2,"mo-U10":4,"mo-U12":2,"mo-U14":12,"mo-U16":8,"la-U8":18,"la-U10":15,"la-U12":7,"la-U14":15,"la-U16":9}},
+  mo:{U8:[{"name":"蔡苡彤","r1":1,"r2":1},{"name":"吳允馨","r1":2,"r2":2}],U10:[{"name":"許宇岑","r1":1,"r2":1},{"name":"鄭熙恩","r1":2,"r2":3},{"name":"林若函","r1":3,"r2":2},{"name":"吳羿霏","r1":4,"r2":4},{"name":"趙金萱","r1":5,"r2":null},{"name":"李紹萌","r1":6,"r2":null},{"name":"曾仲誼","r1":"SF","r2":null},{"name":"劉彥均","r1":"SF","r2":null}],U12:[{"name":"宋語瑄","r1":1,"r2":null},{"name":"郭吳采蓁","r1":2,"r2":null},{"name":"劉玥","r1":3,"r2":1},{"name":"許宇岑","r1":4,"r2":2},{"name":"李姍檥","r1":5,"r2":null},{"name":"戴若妃","r1":6,"r2":null},{"name":"阮悅恩","r1":"SF","r2":null},{"name":"吳柏妤","r1":"SF","r2":null},{"name":"賴亮縈","r1":"R","r2":null},{"name":"張岑銥","r1":"R","r2":null},{"name":"曾柔熹","r1":"R","r2":null},{"name":"許舒涵","r1":"R","r2":null},{"name":"李宥誼","r1":"R","r2":null}],U14:[{"name":"宋語瑄","r1":1,"r2":null},{"name":"郭吳采蓁","r1":2,"r2":null},{"name":"曾羽彤","r1":3,"r2":1},{"name":"林恩正","r1":4,"r2":null},{"name":"廖昱婷","r1":5,"r2":null},{"name":"郭姲緹","r1":6,"r2":4},{"name":"許恩慈","r1":"SF","r2":2},{"name":"趙金翎","r1":"SF","r2":null},{"name":"陳聖煒","r1":"SF","r2":null},{"name":"蘇珝喬","r1":"R","r2":3},{"name":"陳語柔","r1":"R","r2":null},{"name":"羅以婷","r1":"R","r2":"SF"},{"name":"吳幸恩","r1":"R","r2":"R"},{"name":"石霈萱","r1":"R","r2":"R"},{"name":"戴亞節","r1":"R","r2":null},{"name":"蕭詩芮","r1":"R","r2":"R"},{"name":"盧宥安","r1":"R","r2":null},{"name":"劉欣","r1":null,"r2":5},{"name":"陳宣甯","r1":null,"r2":"SF"},{"name":"朱怡璇","r1":null,"r2":6},{"name":"黃琝潔","r1":null,"r2":"R"}],U16:[{"name":"楊絜涵","r1":1,"r2":null},{"name":"曾羽彤","r1":2,"r2":2},{"name":"陳品妍","r1":3,"r2":1},{"name":"黃永騰","r1":4,"r2":null},{"name":"廖昱婷","r1":5,"r2":null},{"name":"郭姲緹","r1":6,"r2":4},{"name":"林昕樂","r1":"SF","r2":null},{"name":"許恩慈","r1":"SF","r2":3},{"name":"林俊安","r1":"R","r2":6},{"name":"石霈萱","r1":"R","r2":"SF"},{"name":"游立安","r1":"R","r2":null},{"name":"劉宇芯","r1":null,"r2":5},{"name":"王以捷","r1":null,"r2":"SF"}]},
+  la:{U8:[{"name":"蔡苡彤","r1":1,"r2":2},{"name":"連歆媛","r1":2,"r2":null},{"name":"鄭丁綺","r1":3,"r2":null},{"name":"司昕儒","r1":4,"r2":null},{"name":"程翌昕","r1":5,"r2":null},{"name":"江淳凈","r1":6,"r2":null},{"name":"Chong Wen Xian 张雯仙","r1":"SF","r2":null},{"name":"Taylie Ang Ern Xi 洪恩熙","r1":"SF","r2":null},{"name":"仇芯霈","r1":"R","r2":"SF"},{"name":"吳允馨","r1":"R","r2":5},{"name":"郭俊鋙","r1":"R","r2":null},{"name":"謝侑璇","r1":"R","r2":null},{"name":"許瑀心","r1":"R","r2":null},{"name":"劉彥","r1":"R","r2":null},{"name":"劉亦","r1":"R","r2":null},{"name":"陳姈羚","r1":null,"r2":1},{"name":"詹昀芸","r1":null,"r2":3},{"name":"白芯","r1":null,"r2":4},{"name":"鄒依凝","r1":null,"r2":6},{"name":"朱家麟","r1":null,"r2":"SF"},{"name":"王翊馨","r1":null,"r2":"SF"},{"name":"蔡甯袀","r1":null,"r2":"R"},{"name":"侯宥心","r1":null,"r2":"R"},{"name":"李湘沂","r1":null,"r2":"R"},{"name":"蘇資勻","r1":null,"r2":"R"},{"name":"沈妤蓁","r1":null,"r2":"R"},{"name":"洪旭衍","r1":null,"r2":"R"},{"name":"許琂琋","r1":null,"r2":"R"},{"name":"丁云芯","r1":null,"r2":"R"},{"name":"楊語喬","r1":null,"r2":"R"}],U10:[{"name":"許宇岑","r1":1,"r2":4},{"name":"Vitas Ng Sen Yang 黄森阳","r1":2,"r2":null},{"name":"鄭熙恩","r1":3,"r2":5},{"name":"周亞璇","r1":4,"r2":"SF"},{"name":"楊芮菲","r1":5,"r2":null},{"name":"吳羿霏","r1":6,"r2":"R"},{"name":"林若函","r1":"SF","r2":6},{"name":"李紹萌","r1":"SF","r2":null},{"name":"陳宣穎","r1":"R","r2":"SF"},{"name":"劉芯維","r1":"R","r2":null},{"name":"王唯珊","r1":"R","r2":null},{"name":"何芮彤","r1":"R","r2":null},{"name":"蔡巧儀","r1":"R","r2":null},{"name":"歐陽仕玹","r1":"R","r2":null},{"name":"賴芯晴","r1":"R","r2":null},{"name":"游天嵐","r1":"R","r2":null},{"name":"蔡珮諄","r1":null,"r2":2},{"name":"陳姈羚","r1":null,"r2":1},{"name":"林剴玄","r1":null,"r2":3},{"name":"陳墨熙","r1":null,"r2":"R"},{"name":"蔡甯袀","r1":null,"r2":"R"},{"name":"王翊馨","r1":null,"r2":"R"},{"name":"仇芯霈","r1":null,"r2":"R"},{"name":"陳煒宸","r1":null,"r2":"R"},{"name":"沈妤蓁","r1":null,"r2":"R"}],U12:[{"name":"宋語瑄","r1":1,"r2":null},{"name":"郭吳采蓁","r1":2,"r2":null},{"name":"李姍檥","r1":3,"r2":null},{"name":"劉玥","r1":4,"r2":1},{"name":"許宇岑","r1":5,"r2":4},{"name":"邵佩羚","r1":6,"r2":2},{"name":"陳品辰","r1":"SF","r2":null},{"name":"阮悅恩","r1":"SF","r2":null},{"name":"陳玉釩","r1":"R","r2":null},{"name":"周亞璇","r1":"R","r2":6},{"name":"張榕晅","r1":"R","r2":null},{"name":"林薇恩","r1":"R","r2":null},{"name":"丘詩盈","r1":"R","r2":"SF"},{"name":"戴若妃","r1":"R","r2":null},{"name":"何芸逸","r1":"R","r2":null},{"name":"許舒涵","r1":"R","r2":null},{"name":"李宥誼","r1":"P","r2":null},{"name":"陳若竹","r1":"P","r2":null},{"name":"李喬淅","r1":"P","r2":null},{"name":"蔡珮諄","r1":null,"r2":3},{"name":"李芯樂","r1":null,"r2":5}],U14:[{"name":"宋語瑄","r1":1,"r2":null},{"name":"郭吳采蓁","r1":2,"r2":null},{"name":"林恩正","r1":3,"r2":null},{"name":"林采潔","r1":4,"r2":null},{"name":"曾羽彤","r1":5,"r2":1},{"name":"蘇珝喬","r1":6,"r2":3},{"name":"林宣余","r1":"SF","r2":null},{"name":"蔡心彤","r1":"SF","r2":5},{"name":"顏暄紜","r1":"R","r2":null},{"name":"許恩慈","r1":"R","r2":2},{"name":"郭姲緹","r1":"R","r2":4},{"name":"吳幸恩","r1":"R","r2":"SF"},{"name":"羅以婷","r1":"R","r2":"R"},{"name":"廖昱婷","r1":"R","r2":null},{"name":"鄭詩縈","r1":"R","r2":null},{"name":"盧宥安","r1":"R","r2":null},{"name":"蔡洺涓","r1":"P","r2":null},{"name":"蕭詩芮","r1":"P","r2":"R"},{"name":"楊海柔","r1":"P","r2":null},{"name":"朱怡璇","r1":null,"r2":"SF"},{"name":"陳品辰","r1":null,"r2":6},{"name":"張家瑜","r1":null,"r2":"R"},{"name":"黃琝潔","r1":null,"r2":"R"},{"name":"陳宣甯","r1":null,"r2":"R"},{"name":"梁曉靜","r1":null,"r2":"R"},{"name":"翁湘甯","r1":null,"r2":"R"}],U16:[{"name":"楊絜涵","r1":1,"r2":null},{"name":"林采潔","r1":2,"r2":null},{"name":"陳品妍","r1":3,"r2":1},{"name":"莊婕琳","r1":4,"r2":6},{"name":"蔡心彤","r1":5,"r2":4},{"name":"Evangeline Law Le Xuan","r1":6,"r2":null},{"name":"許恩慈","r1":"SF","r2":3},{"name":"郭姲緹","r1":"SF","r2":5},{"name":"Jody Yan Jia Xin","r1":"R","r2":null},{"name":"廖昱婷","r1":"R","r2":null},{"name":"黃永騰","r1":"R","r2":null},{"name":"陳姿吟","r1":"R","r2":null},{"name":"曾羽彤","r1":null,"r2":2},{"name":"Go Jie Ling","r1":null,"r2":"SF"},{"name":"劉宇芯","r1":null,"r2":"SF"},{"name":"王以捷","r1":null,"r2":"SF"}]}
 };
 /* ===================================================== */
 var DIVS=[['U8','8 歲以下 三項標準組'],['U10','10 歲以下 五項標準組'],['U12','12 歲以下 五項標準組'],['U14','14 歲以下 五項花步組'],['U16','16 歲以下 五項花步組']];
@@ -125,21 +132,33 @@ function render(){
   document.getElementById('bTitle').innerHTML='<span class="div">'+dv+'</span>'+s[2]+' · '+d[1];
   var key=st+'-'+dv,n1=DATA.meta.r1n[key],n2=DATA.meta.r2n[key];
   document.getElementById('bSub').textContent='R1 參賽 '+(n1?n1+' 人（×'+coef(n1).toFixed(1)+'）':'—')+'　R2 參賽 '+(n2?n2+' 人（×'+coef(n2).toFixed(1)+'）':'—');
-  var list=(DATA[st][dv]||[]).map(function(p){
+  var all=(DATA[st][dv]||[]).map(function(p){
     var a=p.r1!=null?r1(PTS[p.r1]*coef(n1)):null,b=p.r2!=null?r1(PTS[p.r2]*coef(n2)):null;
     var best=Math.min(p.r1!=null?RANK[p.r1]:99,p.r2!=null?RANK[p.r2]:99);
     var big=(n1||0)>=(n2||0)?p.r1:p.r2;
-    return {p:p,a:a,b:b,t:r1((a||0)+(b||0)),best:best,big:big!=null?RANK[big]:99,tb:p.tb||0};
-  }).sort(function(x,y){return y.t-x.t||x.best-y.best||x.big-y.big||x.tb-y.tb;});
-  var tb=document.getElementById('rows');tb.innerHTML='';
-  document.getElementById('empty').hidden=list.length>0;
-  list.forEach(function(x,i){
-    var tr=document.createElement('tr');if(i<3)tr.className='p'+(i+1);
-    function cell(pl,v){return pl==null?'<span class="dash">—</span>':'<div class="cell"><b>'+v+'</b><small>'+LBL[pl]+'</small></div>';}
-    tr.innerHTML='<td class="pos num">'+String(i+1).padStart(2,'0')+'</td><td class="name"><b></b><small></small></td><td class="r">'+cell(x.p.r1,x.a)+'</td><td class="r">'+cell(x.p.r2,x.b)+'</td><td class="r total num">'+x.t+'</td>';
-    tr.querySelector('.name b').textContent=x.p.name;tr.querySelector('.name small').textContent=x.p.studio||'';
-    tb.appendChild(tr);
+    return {p:p,a:a,b:b,t:r1((a||0)+(b||0)),best:best,big:big!=null?RANK[big]:99,el:p.r1!=null&&p.r2!=null};
   });
+  /* 同分決勝：1 單場最佳名次 2 兩人同場時直接名次（勝場多者）3 人數較多那場的名次 4 仍平手並列 */
+  function h2h(x,y){var w=0;['r1','r2'].forEach(function(k){var u=x.p[k],v=y.p[k];if(u!=null&&v!=null){if(RANK[u]<RANK[v])w--;else if(RANK[u]>RANK[v])w++;}});return w;}
+  function cmp(x,y){return y.t-x.t||x.best-y.best||h2h(x,y)||x.big-y.big;}
+  var ranked=all.filter(function(x){return x.el;}).sort(cmp);
+  var others=all.filter(function(x){return !x.el;}).sort(function(x,y){return y.t-x.t||x.best-y.best;});
+  ranked.forEach(function(x,i){x.rank=(i>0&&cmp(ranked[i-1],x)===0)?ranked[i-1].rank:i+1;});
+  var tb=document.getElementById('rows');tb.innerHTML='';
+  document.getElementById('empty').hidden=all.length>0;
+  var ch=document.getElementById('champ'),tops=ranked.filter(function(x){return x.rank===1;});
+  if(tops.length){ch.hidden=false;ch.innerHTML='<span class="k">2026 年度積分冠軍</span><b></b><span class="pt"></span>';ch.querySelector('b').textContent=tops.map(function(x){return x.p.name;}).join('、')+(tops.length>1?'（並列）':'');ch.querySelector('.pt').textContent=tops[0].t+' 分';}
+  else ch.hidden=true;
+  function cell(pl,v){return pl==null?'<span class="dash">—</span>':'<div class="cell"><b>'+v+'</b><small>'+LBL[pl]+'</small></div>';}
+  function row(x,pos,cls){
+    var tr=document.createElement('tr');if(cls)tr.className=cls;
+    tr.innerHTML='<td class="pos num">'+pos+'</td><td class="name"><b></b><small></small></td><td class="r">'+cell(x.p.r1,x.a)+'</td><td class="r">'+cell(x.p.r2,x.b)+'</td><td class="r total num">'+x.t+'</td>';
+    tr.querySelector('.name b').textContent=x.p.name;tr.querySelector('.name small').textContent=x.p.studio||(x.el?'':'只參加一場');
+    tb.appendChild(tr);
+  }
+  ranked.forEach(function(x){row(x,String(x.rank).padStart(2,'0'),x.rank<=3?'p'+x.rank:'');});
+  if(others.length){var sp=document.createElement('tr');sp.className='sep';sp.innerHTML='<td colspan="5">以下選手只參加一場比賽，不列入年度排名</td>';tb.appendChild(sp);
+    others.forEach(function(x){row(x,'—','out');});}
 }
 render();
 </script>
